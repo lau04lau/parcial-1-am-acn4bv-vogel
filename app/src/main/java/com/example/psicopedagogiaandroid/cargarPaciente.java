@@ -1,10 +1,12 @@
 package com.example.psicopedagogiaandroid;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -29,32 +31,21 @@ public class cargarPaciente extends AppCompatActivity {
     private EditText motivoConsulta;
     private EditText gradoCurso;
     private EditText nivelEducativo;
+    private ArrayList<Paciente> pacientes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle bundle = getIntent().getExtras();
-        ArrayList<Paciente> pacientes = (ArrayList<Paciente>) bundle.get("pacientes");
+        pacientes = (ArrayList<Paciente>) bundle.get("pacientes");
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_cargar_paciente);
 
         nivelEdu = findViewById(R.id.nivelEdu);
         fechaNac = findViewById(R.id.fechaNac);
 
-        String[] opciones = {
-                "Inicial",
-                "Primario",
-                "Secundario",
-                "Terciario",
-                "Universitario",
-                "Posgrado"
-        };
-
-        ArrayAdapter<String> adaptador = new ArrayAdapter<>(
-                this,
-                R.layout.spinner_dropdown_item,
-                opciones
-        );
+        String[] opciones = {"Inicial","Primario","Secundario","Terciario","Universitario","Posgrado"};
+        ArrayAdapter<String> adaptador = new ArrayAdapter<>(this, R.layout.spinner_dropdown_item, opciones);
         nivelEdu.setAdapter(adaptador);
 
         fechaNac.setOnClickListener(v -> {
@@ -62,12 +53,10 @@ public class cargarPaciente extends AppCompatActivity {
             int y = c.get(Calendar.YEAR);
             int m = c.get(Calendar.MONTH);
             int d = c.get(Calendar.DAY_OF_MONTH);
-
             DatePickerDialog dp = new DatePickerDialog(
                     this,
                     (view, year, month, dayOfMonth) -> {
-                        String txt = String.format(Locale.getDefault(), "%02d/%02d/%04d",
-                                dayOfMonth, month + 1, year);
+                        String txt = String.format(Locale.getDefault(), "%02d/%02d/%04d", dayOfMonth, month + 1, year);
                         fechaNac.setText(txt);
                     },
                     y, m, d
@@ -133,5 +122,39 @@ public class cargarPaciente extends AppCompatActivity {
             fechaNacimiento.setError("Complete la fecha de nacimiento");
             return;
         }
+
+        SimpleDateFormat out = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        String resumen =
+                "Nombre: " + p.getNombre() + "\n" +
+                        "Apellido: " + p.getApellido() + "\n" +
+                        "DNI: " + p.getDni() + "\n" +
+                        "Teléfono: " + p.getTelefono() + "\n" +
+                        "Fecha nac.: " + (p.getFechaNac() != null ? out.format(p.getFechaNac()) : "") + "\n" +
+                        "Motivo: " + p.getMotivoConsulta() + "\n" +
+                        "Nivel educativo: " + p.getNivelEducativo() + "\n" +
+                        "Grado/Curso: " + p.getGradoCurso();
+
+        new AlertDialog.Builder(this)
+                .setTitle("Confirmar paciente")
+                .setMessage(resumen)
+                .setPositiveButton("Guardar", (dialog, which) -> {
+                    pacientes.add(p);
+                    Toast.makeText(this, "Paciente guardado", Toast.LENGTH_SHORT).show();
+                    limpiarFormulario();
+                })
+                .setNegativeButton("Cancelar", null)
+                .show();
+    }
+
+    private void limpiarFormulario() {
+        nombre.setText("");
+        apellido.setText("");
+        dni.setText("");
+        telefono.setText("");
+        fechaNacimiento.setText("");
+        motivoConsulta.setText("");
+        gradoCurso.setText("");
+        nivelEducativo.setText("");
+        nivelEdu.setText("", false);
     }
 }
