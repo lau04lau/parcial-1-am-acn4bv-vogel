@@ -163,4 +163,15 @@
             android:dropDownHorizontalOffset="0dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Button
+        android:id="@+id/btnAgregar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#3d5a80"
+        android:text="Agregar"
+        android:textColorLink="#98c1d9"
+        app:rippleColor="#98c1d9"
+        app:strokeColor="#98c1d9"
+        app:strokeWidth="0.5pt" />
+
 </LinearLayout>
