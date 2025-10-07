@@ -5,32 +5,42 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class cargarPaciente extends AppCompatActivity {
 
     private AutoCompleteTextView nivelEdu;
     private EditText fechaNac;
+    private EditText nombre;
+    private EditText apellido;
+    private EditText dni;
+    private EditText telefono;
+    private EditText fechaNacimiento;
+    private EditText motivoConsulta;
+    private EditText gradoCurso;
+    private EditText nivelEducativo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle bundle = getIntent().getExtras();
+        ArrayList<Paciente> pacientes = (ArrayList<Paciente>) bundle.get("pacientes");
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_cargar_paciente);
 
-        // Referencias
         nivelEdu = findViewById(R.id.nivelEdu);
         fechaNac = findViewById(R.id.fechaNac);
 
-        // Opciones del dropdown
         String[] opciones = {
                 "Inicial",
                 "Primario",
@@ -40,7 +50,6 @@ public class cargarPaciente extends AppCompatActivity {
                 "Posgrado"
         };
 
-        // Adaptador con tu diseño personalizado
         ArrayAdapter<String> adaptador = new ArrayAdapter<>(
                 this,
                 R.layout.spinner_dropdown_item,
@@ -48,7 +57,6 @@ public class cargarPaciente extends AppCompatActivity {
         );
         nivelEdu.setAdapter(adaptador);
 
-        // DatePicker para fecha de nacimiento
         fechaNac.setOnClickListener(v -> {
             final Calendar c = Calendar.getInstance();
             int y = c.get(Calendar.YEAR);
@@ -64,14 +72,66 @@ public class cargarPaciente extends AppCompatActivity {
                     },
                     y, m, d
             );
+            dp.getDatePicker().setMaxDate(System.currentTimeMillis());
             dp.show();
         });
 
-        // Ajuste para pantallas edge-to-edge
+        findViewById(R.id.btnAgregar).setOnClickListener(v -> agregarPaciente());
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    public void agregarPaciente() {
+        Paciente p = new Paciente();
+        nombre = findViewById(R.id.nombre);
+        apellido = findViewById(R.id.apellido);
+        dni = findViewById(R.id.dni);
+        telefono = findViewById(R.id.telefono);
+        fechaNacimiento = findViewById(R.id.fechaNac);
+        motivoConsulta = findViewById(R.id.motivoconsulta);
+        gradoCurso = findViewById(R.id.curso);
+        nivelEducativo = findViewById(R.id.nivelEdu);
+
+        p.setNombre(nombre.getText().toString());
+        p.setApellido(apellido.getText().toString());
+        p.setDni(dni.getText().toString());
+        p.setTelefono(telefono.getText().toString());
+        p.setMotivoConsulta(motivoConsulta.getText().toString());
+
+        int grado;
+        try {
+            String gradoTxt = gradoCurso.getText().toString().trim();
+            grado = Integer.parseInt(gradoTxt);
+        } catch (NumberFormatException e) {
+            gradoCurso.setError("Ingrese un número entero");
+            return;
+        }
+        p.setGradoCurso(grado);
+        p.setNivelEducativo(nivelEducativo.getText().toString());
+
+        String fechaTxt = fechaNacimiento.getText().toString().trim();
+        if (!fechaTxt.isEmpty()) {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            sdf.setLenient(false);
+            Date fecha;
+            try {
+                fecha = sdf.parse(fechaTxt);
+            } catch (ParseException e) {
+                fechaNacimiento.setError("Fecha inválida (dd/MM/yyyy)");
+                return;
+            }
+            if (fecha.after(new Date())) {
+                fechaNacimiento.setError("La fecha no puede ser futura");
+                return;
+            }
+            p.setFechaNac(fecha);
+        } else {
+            fechaNacimiento.setError("Complete la fecha de nacimiento");
+            return;
+        }
     }
 }
