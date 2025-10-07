@@ -118,7 +118,6 @@ public class Paciente  {
 
     @Override
     public String toString() {
-        // Útil para logs y depuración
         return "Paciente{" +
                 "nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +

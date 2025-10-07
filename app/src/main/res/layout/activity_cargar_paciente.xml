@@ -33,11 +33,12 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nombre"
+            style="@style/EditTextCursorColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ingrese el nombre"
             android:textColor="#edf8f9"
-            android:textColorLink="#edf8f9" />
+            android:textColorHint="#edf8f9" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -50,11 +51,12 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/apellido"
+            style="@style/EditTextCursorColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ingrese el apellido"
             android:textColor="#edf8f9"
-            android:textColorLink="#edf8f9" />
+            android:textColorHint="#edf8f9" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -67,11 +69,12 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/dni"
+            style="@style/EditTextCursorColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ingrese el DNI"
             android:textColor="#edf8f9"
-            android:textColorLink="#edf8f9" />
+            android:textColorHint="#edf8f9" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -84,11 +87,12 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/telefono"
+            style="@style/EditTextCursorColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ingrese el teléfono"
             android:textColor="#edf8f9"
-            android:textColorLink="#edf8f9" />
+            android:textColorHint="#edf8f9" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -101,11 +105,12 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/motivoconsulta"
+            style="@style/EditTextCursorColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ingrese el motivo de consulta"
             android:textColor="#edf8f9"
-            android:textColorLink="#edf8f9" />
+            android:textColorHint="#edf8f9" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -119,6 +124,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/fechaNac"
+            style="@style/EditTextCursorColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
@@ -126,8 +132,7 @@
             android:inputType="none"
             android:padding="12dp"
             android:textColor="#edf8f9"
-            android:textColorHint="#edf8f9"
-            android:textColorLink="#edf8f9" />
+            android:textColorHint="#edf8f9" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -145,6 +150,7 @@
 
         <AutoCompleteTextView
             android:id="@+id/nivelEdu"
+            style="@style/EditTextCursorColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
@@ -168,13 +174,13 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/curso"
+            style="@style/EditTextCursorColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ingrese el curso o grado"
             android:inputType="number"
             android:textColor="#edf8f9"
-            android:textColorHint="#edf8f9"
-            android:textColorLink="#edf8f9" />
+            android:textColorHint="#edf8f9" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
