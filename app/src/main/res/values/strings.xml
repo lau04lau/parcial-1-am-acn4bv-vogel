@@ -14,4 +14,5 @@
     <string name="agregar_paciente1">Agregar Paciente</string>
     <string name="logo_tipo_del_proyecto">logo tipo Del Proyecto</string>
     <string name="historial_psicopedag_gico">Historial Psicopedagógico</string>
+    <string name="eliminar">Eliminar</string>
 </resources>

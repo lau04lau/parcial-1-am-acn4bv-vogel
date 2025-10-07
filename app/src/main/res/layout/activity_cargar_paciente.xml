@@ -1,227 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3d5a80"
-    tools:context=".cargarPaciente">
+    android:fillViewport="true">
 
-    <!-- Contenedor del formulario con ancho máximo -->
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="44dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintStart_toStartOf="@+id/formContainer"
-        app:layout_constraintTop_toTopOf="@+id/formContainer"
-        app:srcCompat="@drawable/icono" />
-
-    <LinearLayout
-        android:id="@+id/formContainer"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_max="600dp">
+        android:background="#3d5a80"
+        tools:context=".cargarPaciente">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
+        <!-- Contenedor del formulario con ancho máximo -->
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="44dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintStart_toStartOf="@+id/formContainer"
+            app:layout_constraintTop_toTopOf="@+id/formContainer"
+            app:srcCompat="@drawable/icono" />
+
+        <LinearLayout
+            android:id="@+id/formContainer"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:paddingVertical="12pt"
-            android:text="@string/agregar_paciente"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="#edf8f9"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:padding="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_max="600dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:textColorHint="#edf8f9"
-            app:boxStrokeColor="#edf8f9"
-            app:hintTextColor="#edf8f9">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/nombre"
-                style="@style/EditTextCursorColor"
+            <TextView
+                android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/ingrese_el_nombre"
+                android:layout_marginBottom="24dp"
+                android:paddingVertical="12pt"
+                android:text="@string/agregar_paciente"
+                android:textAlignment="center"
+                android:textAllCaps="true"
                 android:textColor="#edf8f9"
-                android:textColorHint="#edf8f9" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:textColorHint="#edf8f9"
-            app:boxStrokeColor="#edf8f9"
-            app:hintTextColor="#edf8f9">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/apellido"
-                style="@style/EditTextCursorColor"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/ingrese_el_apellido"
-                android:textColor="#edf8f9"
-                android:textColorHint="#edf8f9" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginBottom="12dp"
+                android:textColorHint="#edf8f9"
+                app:boxStrokeColor="#edf8f9"
+                app:hintTextColor="#edf8f9">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:textColorHint="#edf8f9"
-            app:boxStrokeColor="#edf8f9"
-            app:hintTextColor="#edf8f9">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nombre"
+                    style="@style/EditTextCursorColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/ingrese_el_nombre"
+                    android:textColor="#edf8f9"
+                    android:textColorHint="#edf8f9" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/dni"
-                style="@style/EditTextCursorColor"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/ingrese_el_dni"
-                android:textColor="#edf8f9"
-                android:textColorHint="#edf8f9" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginBottom="12dp"
+                android:textColorHint="#edf8f9"
+                app:boxStrokeColor="#edf8f9"
+                app:hintTextColor="#edf8f9">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:textColorHint="#edf8f9"
-            app:boxStrokeColor="#edf8f9"
-            app:hintTextColor="#edf8f9">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/apellido"
+                    style="@style/EditTextCursorColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/ingrese_el_apellido"
+                    android:textColor="#edf8f9"
+                    android:textColorHint="#edf8f9" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/telefono"
-                style="@style/EditTextCursorColor"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/ingrese_el_tel_fono"
-                android:textColor="#edf8f9"
-                android:textColorHint="#edf8f9" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginBottom="12dp"
+                android:textColorHint="#edf8f9"
+                app:boxStrokeColor="#edf8f9"
+                app:hintTextColor="#edf8f9">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:textColorHint="#edf8f9"
-            app:boxStrokeColor="#edf8f9"
-            app:hintTextColor="#edf8f9">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/dni"
+                    style="@style/EditTextCursorColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/ingrese_el_dni"
+                    android:textColor="#edf8f9"
+                    android:textColorHint="#edf8f9" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/motivoconsulta"
-                style="@style/EditTextCursorColor"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/ingrese_el_motivo_de_consulta"
-                android:textColor="#edf8f9"
-                android:textColorHint="#edf8f9" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginBottom="12dp"
+                android:textColorHint="#edf8f9"
+                app:boxStrokeColor="#edf8f9"
+                app:hintTextColor="#edf8f9">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:hint="@string/fecha_de_nacimiento"
-            android:textColorHint="#edf8f9"
-            app:boxStrokeColor="#edf8f9"
-            app:hintTextColor="#edf8f9">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/telefono"
+                    style="@style/EditTextCursorColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/ingrese_el_tel_fono"
+                    android:textColor="#edf8f9"
+                    android:textColorHint="#edf8f9" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/fechaNac"
-                style="@style/EditTextCursorColor"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="false"
-                android:inputType="none"
-                android:padding="12dp"
-                android:textColor="#edf8f9"
-                android:textColorHint="#edf8f9" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginBottom="12dp"
+                android:textColorHint="#edf8f9"
+                app:boxStrokeColor="#edf8f9"
+                app:hintTextColor="#edf8f9">
 
-        <!-- NIVEL EDUCATIVO -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/nivelEduLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:hint="@string/nivel_educativo"
-            android:labelFor="@id/nivelEdu"
-            android:textColorHint="#edf8f9"
-            app:boxStrokeColor="#edf8f9"
-            app:endIconTint="#edf8f9"
-            app:hintTextColor="#edf8f9"
-            app:startIconTint="#edf8f9">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/motivoconsulta"
+                    style="@style/EditTextCursorColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/ingrese_el_motivo_de_consulta"
+                    android:textColor="#edf8f9"
+                    android:textColorHint="#edf8f9" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <AutoCompleteTextView
-                android:id="@+id/nivelEdu"
-                style="@style/EditTextCursorColor"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#edf8f9"
-                android:dropDownWidth="match_parent"
-                android:dropDownHeight="wrap_content"
-                android:dropDownHorizontalOffset="0dp"
-                android:dropDownVerticalOffset="8dp"
+                android:layout_marginBottom="12dp"
+                android:hint="@string/fecha_de_nacimiento"
+                android:textColorHint="#edf8f9"
+                app:boxStrokeColor="#edf8f9"
+                app:hintTextColor="#edf8f9">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fechaNac"
+                    style="@style/EditTextCursorColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:inputType="none"
+                    android:padding="12dp"
+                    android:textColor="#edf8f9"
+                    android:textColorHint="#edf8f9" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- NIVEL EDUCATIVO -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nivelEduLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
                 android:hint="@string/nivel_educativo"
-                android:inputType="none"
-                android:minHeight="48dp"
-                android:padding="12dp"
-                android:paddingVertical="12dp"
-                android:popupBackground="#3d5a80"
-                android:textColor="#edf8f9"
-                tools:ignore="LabelFor" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:labelFor="@id/nivelEdu"
+                android:textColorHint="#edf8f9"
+                app:boxStrokeColor="#edf8f9"
+                app:endIconTint="#edf8f9"
+                app:hintTextColor="#edf8f9"
+                app:startIconTint="#edf8f9">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:textColorHint="#edf8f9"
-            app:boxStrokeColor="#edf8f9"
-            app:hintTextColor="#edf8f9">
+                <AutoCompleteTextView
+                    android:id="@+id/nivelEdu"
+                    style="@style/EditTextCursorColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#edf8f9"
+                    android:dropDownWidth="match_parent"
+                    android:dropDownHeight="wrap_content"
+                    android:dropDownHorizontalOffset="0dp"
+                    android:dropDownVerticalOffset="8dp"
+                    android:hint="@string/nivel_educativo"
+                    android:inputType="none"
+                    android:minHeight="48dp"
+                    android:padding="12dp"
+                    android:paddingVertical="12dp"
+                    android:popupBackground="#3d5a80"
+                    android:textColor="#edf8f9"
+                    tools:ignore="LabelFor" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/curso"
-                style="@style/EditTextCursorColor"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/ingrese_el_curso_o_grado"
-                android:inputType="number"
-                android:textColor="#edf8f9"
-                android:textColorHint="#edf8f9" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginBottom="16dp"
+                android:textColorHint="#edf8f9"
+                app:boxStrokeColor="#edf8f9"
+                app:hintTextColor="#edf8f9">
 
-        <Button
-            android:id="@+id/btnAgregar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#3d5a80"
-            android:minHeight="48dp"
-            android:text="@string/agregar"
-            android:textColor="#98c1d9"
-            app:rippleColor="#98c1d9"
-            app:strokeColor="#98c1d9"
-            app:strokeWidth="0.5pt" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/curso"
+                    style="@style/EditTextCursorColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/ingrese_el_curso_o_grado"
+                    android:inputType="number"
+                    android:textColor="#edf8f9"
+                    android:textColorHint="#edf8f9" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/btnAgregar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#3d5a80"
+                android:minHeight="48dp"
+                android:text="@string/agregar"
+                android:textColor="#98c1d9"
+                app:rippleColor="#98c1d9"
+                app:strokeColor="#98c1d9"
+                app:strokeWidth="0.5pt" />
+
+            <ScrollView
+                android:id="@+id/agregados"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/agregadoslineal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="TABLA" />
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

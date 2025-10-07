@@ -1,5 +1,11 @@
 package com.example.psicopedagogiaandroid;
 
+import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+import android.view.ViewGroup;
+
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -32,6 +38,8 @@ public class cargarPaciente extends AppCompatActivity {
     private EditText gradoCurso;
     private EditText nivelEducativo;
     private ArrayList<Paciente> pacientes;
+    private LinearLayout agregadosContainer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +49,7 @@ public class cargarPaciente extends AppCompatActivity {
         pacientes = (ArrayList<Paciente>) bundle.get("pacientes");
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_cargar_paciente);
-
+        agregadosContainer = findViewById(R.id.agregadoslineal);
         nivelEdu = findViewById(R.id.nivelEdu);
         fechaNac = findViewById(R.id.fechaNac);
 
@@ -97,7 +105,7 @@ public class cargarPaciente extends AppCompatActivity {
             String gradoTxt = gradoCurso.getText().toString().trim();
             grado = Integer.parseInt(gradoTxt);
         } catch (NumberFormatException e) {
-            gradoCurso.setError("Ingrese un nÃºmero entero");
+            gradoCurso.setError("Ingrese un nÃƒÆ’Ã‚Âºmero entero");
             return;
         }
         p.setGradoCurso(grado);
@@ -111,7 +119,7 @@ public class cargarPaciente extends AppCompatActivity {
             try {
                 fecha = sdf.parse(fechaTxt);
             } catch (ParseException e) {
-                fechaNacimiento.setError("Fecha invÃ¡lida (dd/MM/yyyy)");
+                fechaNacimiento.setError("Fecha invalida (dd/MM/yyyy)");
                 return;
             }
             assert fecha != null;
@@ -130,7 +138,7 @@ public class cargarPaciente extends AppCompatActivity {
                 "Nombre: " + p.getNombre() + "\n" +
                         "Apellido: " + p.getApellido() + "\n" +
                         "DNI: " + p.getDni() + "\n" +
-                        "TelÃ©fono: " + p.getTelefono() + "\n" +
+                        "Telefono: " + p.getTelefono() + "\n" +
                         "Fecha nac.: " + (p.getFechaNac() != null ? out.format(p.getFechaNac()) : "") + "\n" +
                         "Motivo: " + p.getMotivoConsulta() + "\n" +
                         "Nivel educativo: " + p.getNivelEducativo() + "\n" +
@@ -141,6 +149,7 @@ public class cargarPaciente extends AppCompatActivity {
                 .setMessage(resumen)
                 .setPositiveButton("Guardar", (dialog, which) -> {
                     pacientes.add(p);
+                    renderTabla();
                     Toast.makeText(this, "Paciente guardado", Toast.LENGTH_SHORT).show();
                     limpiarFormulario();
                 })
@@ -159,4 +168,56 @@ public class cargarPaciente extends AppCompatActivity {
         nivelEducativo.setText("");
         nivelEdu.setText("", false);
     }
+
+    private void renderTabla() {
+        if (agregadosContainer == null) return;
+        agregadosContainer.removeAllViews();
+
+        TableLayout table = new TableLayout(this);
+        table.setStretchAllColumns(true);
+        table.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+        TableRow header = new TableRow(this);
+        String[] hs = {"Nombre","Apellido","DNI","Teléfono","Nivel","Curso","Fecha Nac.","Motivo"};
+        for (String h : hs) {
+            TextView tv = new TextView(this);
+            tv.setText(h);
+            tv.setPadding(8,8,8,8);
+            header.addView(tv);
+        }
+        table.addView(header);
+
+        if (pacientes != null) {
+            Toast.makeText(this, "EXISTE EL CONTAINER", Toast.LENGTH_SHORT).show();
+            for (Paciente p : pacientes) {
+                TableRow row = new TableRow(this);
+
+                String nombre = p.getNombre() != null ? p.getNombre() : "";
+                String apellido = p.getApellido() != null ? p.getApellido() : "";
+                String dni = p.getDni() != null ? p.getDni() : "";
+                String telefono = p.getTelefono() != null ? p.getTelefono() : "";
+                String nivel = p.getNivelEducativo() != null ? p.getNivelEducativo() : "";
+                String curso = p.getGradoCurso() != 0 ? Integer.toString(p.getGradoCurso()) : "";
+                String motivo = p.getMotivoConsulta() != null ? p.getMotivoConsulta() : "";
+                String fecha = "";
+                java.util.Date d = p.getFechaNac();
+                if (d != null) {
+                    try {
+                        fecha = new java.text.SimpleDateFormat("dd/MM/yyyy", java.util.Locale.getDefault()).format(d);
+                    } catch (Exception ignored) {}
+                }
+
+                String[] cols = {nombre,apellido,dni,telefono,nivel,curso,fecha,motivo};
+                for (String c : cols) {
+                    TextView tv = new TextView(this);
+                    tv.setText(c);
+                    tv.setPadding(8,8,8,8);
+                    row.addView(tv);
+                }
+                table.addView(row);
+            }
+        }
+        agregadosContainer.addView(table);
+    }
+
 }

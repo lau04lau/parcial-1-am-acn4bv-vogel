@@ -41,7 +41,7 @@ public class Paciente  {
 
     public void setNombre(String nombre) {
         if (nombre == null || nombre.trim().isEmpty()) {
-            throw new IllegalArgumentException("El nombre no puede estar vacío");
+            throw new IllegalArgumentException("El nombre no puede estar vacÃƒÂ­o");
         }
         this.nombre = nombre.trim();
     }
@@ -50,7 +50,7 @@ public class Paciente  {
 
     public void setApellido(String apellido) {
         if (apellido == null || apellido.trim().isEmpty()) {
-            throw new IllegalArgumentException("El apellido no puede estar vacío");
+            throw new IllegalArgumentException("El apellido no puede estar vacÃƒÂ­o");
         }
         this.apellido = apellido.trim();
     }
@@ -59,7 +59,7 @@ public class Paciente  {
 
     public void setDni(String dni) {
         if (dni == null || !dni.matches("\\d{7,10}")) {
-            throw new IllegalArgumentException("DNI inválido (debe contener 7 a 10 dígitos)");
+            throw new IllegalArgumentException("DNI invÃƒÂ¡lido (debe contener 7 a 10 dÃƒÂ­gitos)");
         }
         this.dni = dni;
     }
@@ -68,7 +68,7 @@ public class Paciente  {
 
     public void setTelefono(String telefono) {
         if (telefono == null || !telefono.matches("[+\\d()\\s-]{6,20}")) {
-            throw new IllegalArgumentException("Teléfono inválido");
+            throw new IllegalArgumentException("TelÃƒÂ©fono invÃƒÂ¡lido");
         }
         this.telefono = telefono.trim();
     }
@@ -106,7 +106,7 @@ public class Paciente  {
 
     public void setNivelEducativo(String nivelEducativo) {
         if (nivelEducativo == null || nivelEducativo.trim().isEmpty()) {
-            throw new IllegalArgumentException("El nivel educativo no puede estar vacío");
+            throw new IllegalArgumentException("El nivel educativo no puede estar vacÃƒÂ­o");
         }
         this.nivelEducativo = nivelEducativo.trim();
     }
