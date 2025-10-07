@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">psicopedagogiaAndroid</string>
+    <string name="agregar_paciente">Agregar Paciente</string>
+    <string name="ingrese_el_nombre">Ingrese el nombre</string>
+    <string name="ingrese_el_apellido">Ingrese el apellido</string>
+    <string name="ingrese_el_dni">Ingrese el DNI</string>
+    <string name="ingrese_el_tel_fono">Ingrese el teléfono</string>
+    <string name="ingrese_el_motivo_de_consulta">Ingrese el motivo de consulta</string>
+    <string name="fecha_de_nacimiento">Fecha de nacimiento</string>
+    <string name="nivel_educativo">Nivel educativo</string>
+    <string name="ingrese_el_curso_o_grado">Ingrese el curso o grado</string>
+    <string name="agregar">Agregar</string>
+    <string name="campo_para_seleccionar_el_nivel_educativo_del_paciente">Campo para seleccionar el nivel educativo del paciente</string>
+    <string name="agregar_paciente1">Agregar Paciente</string>
+    <string name="logo_tipo_del_proyecto">logo tipo Del Proyecto</string>
+    <string name="historial_psicopedag_gico">Historial Psicopedagógico</string>
 </resources>

@@ -15,7 +15,7 @@
         android:layout_marginTop="388dp"
         android:backgroundTint="#3d5a80"
         android:onClick="btnAgregarPaciente"
-        android:text="Agregar Paciente"
+        android:text="@string/agregar_paciente1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:rippleColor="#98c1d9" />
@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="112dp"
         android:layout_marginTop="36dp"
+        android:contentDescription="@string/logo_tipo_del_proyecto"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
@@ -36,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="252dp"
-        android:text="Historial Psicopedagógico"
+        android:text="@string/historial_psicopedag_gico"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"

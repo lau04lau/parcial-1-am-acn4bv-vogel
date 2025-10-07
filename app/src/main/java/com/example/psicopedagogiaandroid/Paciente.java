@@ -1,13 +1,9 @@
 package com.example.psicopedagogiaandroid;
-
-import android.os.Parcel;
-import android.os.Parcelable;
-
+import androidx.annotation.NonNull;
 import java.util.Date;
 import java.util.Objects;
 
 public class Paciente  {
-
     private String nombre;
     private String apellido;
     private String dni;
@@ -116,6 +112,7 @@ public class Paciente  {
     }
 
 
+    @NonNull
     @Override
     public String toString() {
         return "Paciente{" +
@@ -143,17 +140,6 @@ public class Paciente  {
         return Objects.hash(dni);
     }
 
-    protected Paciente(Parcel in) {
-        nombre = in.readString();
-        apellido = in.readString();
-        dni = in.readString();
-        telefono = in.readString();
-        long fechaMillis = in.readLong();
-        fechaNac = (fechaMillis == -1L) ? null : new Date(fechaMillis);
-        motivoConsulta = in.readString();
-        gradoCurso = in.readInt();
-        nivelEducativo = in.readString();
-    }
 
 
 

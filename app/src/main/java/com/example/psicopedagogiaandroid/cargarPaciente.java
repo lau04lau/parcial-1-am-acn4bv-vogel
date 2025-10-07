@@ -37,6 +37,7 @@ public class cargarPaciente extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle bundle = getIntent().getExtras();
+        assert bundle != null;
         pacientes = (ArrayList<Paciente>) bundle.get("pacientes");
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_cargar_paciente);
@@ -96,7 +97,7 @@ public class cargarPaciente extends AppCompatActivity {
             String gradoTxt = gradoCurso.getText().toString().trim();
             grado = Integer.parseInt(gradoTxt);
         } catch (NumberFormatException e) {
-            gradoCurso.setError("Ingrese un número entero");
+            gradoCurso.setError("Ingrese un nÃºmero entero");
             return;
         }
         p.setGradoCurso(grado);
@@ -110,9 +111,10 @@ public class cargarPaciente extends AppCompatActivity {
             try {
                 fecha = sdf.parse(fechaTxt);
             } catch (ParseException e) {
-                fechaNacimiento.setError("Fecha inválida (dd/MM/yyyy)");
+                fechaNacimiento.setError("Fecha invÃ¡lida (dd/MM/yyyy)");
                 return;
             }
+            assert fecha != null;
             if (fecha.after(new Date())) {
                 fechaNacimiento.setError("La fecha no puede ser futura");
                 return;
@@ -128,7 +130,7 @@ public class cargarPaciente extends AppCompatActivity {
                 "Nombre: " + p.getNombre() + "\n" +
                         "Apellido: " + p.getApellido() + "\n" +
                         "DNI: " + p.getDni() + "\n" +
-                        "Teléfono: " + p.getTelefono() + "\n" +
+                        "TelÃ©fono: " + p.getTelefono() + "\n" +
                         "Fecha nac.: " + (p.getFechaNac() != null ? out.format(p.getFechaNac()) : "") + "\n" +
                         "Motivo: " + p.getMotivoConsulta() + "\n" +
                         "Nivel educativo: " + p.getNivelEducativo() + "\n" +
