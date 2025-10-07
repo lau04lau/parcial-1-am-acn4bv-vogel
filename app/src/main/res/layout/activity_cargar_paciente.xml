@@ -5,98 +5,162 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3d5a80"
     android:orientation="vertical"
+    android:padding="24dp"
     tools:context=".cargarPaciente">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cargar Paciente" />
+        android:layout_marginBottom="24dp"
+        android:paddingVertical="12pt"
+        android:text="Agregar Paciente"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#edf8f9"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:textColorHint="#edf8f9"
+        app:boxStrokeColor="#edf8f9"
+        app:hintTextColor="#edf8f9">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese el nombre" />
+            android:hint="Ingrese el nombre"
+            android:textColor="#edf8f9"
+            android:textColorLink="#edf8f9" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:textColorHint="#edf8f9"
+        app:boxStrokeColor="#edf8f9"
+        app:hintTextColor="#edf8f9">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/apellido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese el apellido" />
+            android:hint="Ingrese el apellido"
+            android:textColor="#edf8f9"
+            android:textColorLink="#edf8f9" />
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:textColorHint="#edf8f9"
+        app:boxStrokeColor="#edf8f9"
+        app:hintTextColor="#edf8f9">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/dni"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese el DNI" />
+            android:hint="Ingrese el DNI"
+            android:textColor="#edf8f9"
+            android:textColorLink="#edf8f9" />
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:textColorHint="#edf8f9"
+        app:boxStrokeColor="#edf8f9"
+        app:hintTextColor="#edf8f9">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/telefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese el telefono" />
+            android:hint="Ingrese el teléfono"
+            android:textColor="#edf8f9"
+            android:textColorLink="#edf8f9" />
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:textColorHint="#edf8f9"
+        app:boxStrokeColor="#edf8f9"
+        app:hintTextColor="#edf8f9">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/motivoconsulta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese el motivo de consulta" />
+            android:hint="Ingrese el motivo de consulta"
+            android:textColor="#edf8f9"
+            android:textColorLink="#edf8f9" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- FECHA DE NACIMIENTO -->
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Fecha de nacimiento">
+        android:layout_marginBottom="12dp"
+        android:hint="Fecha de nacimiento"
+        android:textColorHint="#edf8f9"
+        app:boxStrokeColor="#edf8f9"
+        app:hintTextColor="#edf8f9">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/fechaNac"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="false"
             android:inputType="none"
-            android:padding="12dp" />
+            android:padding="12dp"
+            android:textColor="#edf8f9"
+            android:textColorHint="#edf8f9"
+            android:textColorLink="#edf8f9" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- NIVEL EDUCATIVO -->
+
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nivelEduLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nivel educativo">
+        android:hint="Nivel educativo"
+        android:textColorHint="#edf8f9"
+        android:layout_marginBottom="12dp"
+        app:endIconTint="#edf8f9"
+        app:boxStrokeColor="#edf8f9"
+        app:hintTextColor="#edf8f9"
+        app:startIconTint="#edf8f9">
 
-        <Spinner
+        <AutoCompleteTextView
             android:id="@+id/nivelEdu"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:textColor="#edf8f9"
+            android:backgroundTint="#edf8f9"
             android:padding="12dp"
-            android:contentDescription="Seleccionar nivel educativo"/>
+            android:popupBackground="#3d5a80"
+            android:dropDownVerticalOffset="8dp"
+            android:dropDownHeight="wrap_content"
+            android:dropDownWidth="match_parent"
+            android:dropDownHorizontalOffset="0dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>
