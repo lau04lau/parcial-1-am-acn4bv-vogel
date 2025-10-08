@@ -3,4 +3,5 @@
         <item name="android:textCursorDrawable">@drawable/cursor_color</item>
         <item name="android:textColorHighlight">#80edf8f9</item>
     </style>
+
 </resources>
