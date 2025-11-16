@@ -11,9 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PsicopedagogiaAndroid">
+
+        <activity
+            android:name=".ListaPacientesActivity"
+            android:exported="false" />
+
         <activity
             android:name=".cargarPaciente"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -23,6 +29,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".DetallePacienteActivity"
+            android:exported="false" />
+
+
     </application>
 
 </manifest>

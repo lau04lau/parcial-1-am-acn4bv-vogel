@@ -48,6 +48,8 @@ public class cargarPaciente extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         assert bundle != null;
         pacientes = (ArrayList<Paciente>) bundle.get("pacientes");
+        if (bundle != null) pacientes = (ArrayList<Paciente>) bundle.get("pacientes");
+        if (pacientes == null) pacientes = new ArrayList<>();
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_cargar_paciente);
         agregadosContainer = findViewById(R.id.agregadoslineal);
@@ -95,20 +97,22 @@ public class cargarPaciente extends AppCompatActivity {
         gradoCurso = findViewById(R.id.curso);
         nivelEducativo = findViewById(R.id.nivelEdu);
 
-       try {
-           p.setNombre(nombre.getText().toString());
-           p.setApellido(apellido.getText().toString());
-           p.setDni(dni.getText().toString());
-           p.setTelefono(telefono.getText().toString());
-           p.setMotivoConsulta(motivoConsulta.getText().toString());
-       } catch (Exception e) {
-           new AlertDialog.Builder(this)
-                   .setTitle("Datos inválidos")
-                   .setMessage("Revise que los valores seleccionados sea correctos o no esten vacios")
-                   .setPositiveButton("OK", null)
-                   .show();
-           return;
-       }
+
+        try {
+            p.setNombre(nombre.getText().toString());
+            p.setApellido(apellido.getText().toString());
+            p.setDni(dni.getText().toString());
+            p.setTelefono(telefono.getText().toString());
+            p.setMotivoConsulta(motivoConsulta.getText().toString());
+        } catch (Exception e) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Datos inválidos")
+                    .setMessage("Revise que los valores seleccionados sean correctos o no estén vacíos")
+                    .setPositiveButton("OK", null)
+                    .show();
+            return;
+        }
+
         String vNombre = nombre.getText().toString().trim();
         String vApellido = apellido.getText().toString().trim();
         String vDni = dni.getText().toString().replaceAll("\\D","");
@@ -165,124 +169,123 @@ public class cargarPaciente extends AppCompatActivity {
                 fechaNacimiento.setError("Fecha invalida (dd/MM/yyyy)");
                 return;
             }
-            assert fecha != null;
-            if (fecha.after(new Date())) {
-                fechaNacimiento.setError("La fecha no puede ser futura");
+
+                if (fecha != null && fecha.after(new Date())) {
+                    fechaNacimiento.setError("La fecha no puede ser futura");
+                    return;
+                }
+                p.setFechaNac(fecha);
+            } else {
+                fechaNacimiento.setError("Complete la fecha de nacimiento");
                 return;
             }
-            p.setFechaNac(fecha);
-        } else {
-            fechaNacimiento.setError("Complete la fecha de nacimiento");
-            return;
+
+            SimpleDateFormat out = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            String resumen =
+                    "Nombre: " + p.getNombre() + "\n" +
+                            "Apellido: " + p.getApellido() + "\n" +
+                            "DNI: " + p.getDni() + "\n" +
+                            "Telefono: " + p.getTelefono() + "\n" +
+                            "Fecha nac.: " + (p.getFechaNac() != null ? out.format(p.getFechaNac()) : "") + "\n" +
+                            "Motivo: " + p.getMotivoConsulta() + "\n" +
+                            "Nivel educativo: " + p.getNivelEducativo() + "\n" +
+                            "Grado/Curso: " + p.getGradoCurso();
+
+            new AlertDialog.Builder(this)
+                    .setTitle("Confirmar paciente")
+                    .setMessage(resumen)
+                    .setPositiveButton("Guardar", (dialog, which) -> {
+                        pacientes.add(p);
+                        android.content.Intent i = new android.content.Intent(this, ListaPacientesActivity.class);
+                        i.putExtra("pacientes", pacientes);
+                        startActivity(i);
+                        Toast.makeText(this, "Paciente guardado", Toast.LENGTH_SHORT).show();
+                        limpiarFormulario();
+                    })
+                    .setNegativeButton("Cancelar", null)
+                    .show();
         }
 
-        SimpleDateFormat out = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        String resumen =
-                "Nombre: " + p.getNombre() + "\n" +
-                        "Apellido: " + p.getApellido() + "\n" +
-                        "DNI: " + p.getDni() + "\n" +
-                        "Telefono: " + p.getTelefono() + "\n" +
-                        "Fecha nac.: " + (p.getFechaNac() != null ? out.format(p.getFechaNac()) : "") + "\n" +
-                        "Motivo: " + p.getMotivoConsulta() + "\n" +
-                        "Nivel educativo: " + p.getNivelEducativo() + "\n" +
-                        "Grado/Curso: " + p.getGradoCurso();
-
-        new AlertDialog.Builder(this)
-                .setTitle("Confirmar paciente")
-                .setMessage(resumen)
-                .setPositiveButton("Guardar", (dialog, which) -> {
-                    pacientes.add(p);
-                    renderTabla();
-                    Toast.makeText(this, "Paciente guardado", Toast.LENGTH_SHORT).show();
-                    limpiarFormulario();
-                })
-                .setNegativeButton("Cancelar", null)
-                .show();
-    }
-
-    private void limpiarFormulario() {
-        nombre.setText("");
-        apellido.setText("");
-        dni.setText("");
-        telefono.setText("");
-        fechaNacimiento.setText("");
-        motivoConsulta.setText("");
-        gradoCurso.setText("");
-        nivelEducativo.setText("");
-        nivelEdu.setText("", false);
-    }
-
-    private void renderTabla() {
-        if (agregadosContainer == null) return;
-        agregadosContainer.removeAllViews();
-
-        int colorBorde = android.graphics.Color.parseColor("#edf8f9");
-
-        TableLayout table = new TableLayout(this);
-        table.setStretchAllColumns(true);
-        table.setLayoutParams(new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT));
-        table.setPadding(2, 2, 2, 2);
-        table.setBackgroundColor(colorBorde);
-
-
-        TableRow header = new TableRow(this);
-        header.setBackgroundColor(android.graphics.Color.parseColor("#3d5a80"));
-        String[] hs = {"Nombre", "Apellido", "DNI"};
-        for (String h : hs) {
-            TextView tv = new TextView(this);
-            tv.setText(h);
-            tv.setPadding(8, 8, 8, 8);
-            tv.setTextColor(colorBorde);
-            tv.setBackgroundResource(android.R.color.transparent);
-            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            tv.setBackgroundResource(android.R.color.transparent);
-            header.addView(tv);
+        private void limpiarFormulario() {
+            nombre.setText("");
+            apellido.setText("");
+            dni.setText("");
+            telefono.setText("");
+            fechaNacimiento.setText("");
+            motivoConsulta.setText("");
+            gradoCurso.setText("");
+            nivelEducativo.setText("");
+            nivelEdu.setText("", false);
         }
-        table.addView(header);
-        View headerDivider = new View(this);
-        headerDivider.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, 1));
-        headerDivider.setBackgroundColor(colorBorde);
-        table.addView(headerDivider);
+
+        private void renderTabla() {
+            if (agregadosContainer == null) return;
+            agregadosContainer.removeAllViews();
+
+            int colorBorde = android.graphics.Color.parseColor("#edf8f9");
+
+            TableLayout table = new TableLayout(this);
+            table.setStretchAllColumns(true);
+            table.setLayoutParams(new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT));
+            table.setPadding(2, 2, 2, 2);
+            table.setBackgroundColor(colorBorde);
 
 
-
-        if (pacientes != null) {
-            for (Paciente p : pacientes) {
-                TableRow row = new TableRow(this);
-                row.setBackgroundColor(android.graphics.Color.parseColor("#3d5a80"));
-                row.setPadding(1, 1, 1, 1);
-
-                String nombre = p.getNombre() != null ? p.getNombre() : "";
-                String apellido = p.getApellido() != null ? p.getApellido() : "";
-                String dni = p.getDni() != null ? p.getDni() : "";
-
-                String[] cols = {nombre, apellido, dni};
-                for (String c : cols) {
-                    TextView tv = new TextView(this);
-                    tv.setText(c);
-                    tv.setPadding(8, 8, 8, 8);
-                    tv.setTextColor(colorBorde);
-                    tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    tv.setBackgroundColor(android.graphics.Color.parseColor("#3d5a80"));
-                    tv.setBackgroundResource(android.R.color.transparent);
-                    row.addView(tv);
-                }
-
-
-                View divider = new View(this);
-                divider.setLayoutParams(new TableRow.LayoutParams(
-                        TableRow.LayoutParams.MATCH_PARENT, 1));
-                divider.setBackgroundColor(colorBorde);
-
-                table.addView(row);
-                table.addView(divider);
+            TableRow header = new TableRow(this);
+            header.setBackgroundColor(android.graphics.Color.parseColor("#3d5a80"));
+            String[] hs = {"Nombre", "Apellido", "DNI"};
+            for (String h : hs) {
+                TextView tv = new TextView(this);
+                tv.setText(h);
+                tv.setPadding(8, 8, 8, 8);
+                tv.setTextColor(colorBorde);
+                tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                header.addView(tv);
             }
+            table.addView(header);
+
+            View headerDivider = new View(this);
+            headerDivider.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, 1));
+            headerDivider.setBackgroundColor(colorBorde);
+            table.addView(headerDivider);
+
+
+
+            if (pacientes != null) {
+                for (Paciente p : pacientes) {
+                    TableRow row = new TableRow(this);
+                    row.setBackgroundColor(android.graphics.Color.parseColor("#3d5a80"));
+                    row.setPadding(1, 1, 1, 1);
+
+                    String nombre = p.getNombre() != null ? p.getNombre() : "";
+                    String apellido = p.getApellido() != null ? p.getApellido() : "";
+                    String dni = p.getDni() != null ? p.getDni() : "";
+
+                    String[] cols = {nombre, apellido, dni};
+                    for (String c : cols) {
+                        TextView tv = new TextView(this);
+                        tv.setText(c);
+                        tv.setPadding(8, 8, 8, 8);
+                        tv.setTextColor(colorBorde);
+                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                        row.addView(tv);
+                    }
+
+
+                    View divider = new View(this);
+                    divider.setLayoutParams(new TableRow.LayoutParams(
+                            TableRow.LayoutParams.MATCH_PARENT, 1));
+                    divider.setBackgroundColor(colorBorde);
+
+                    table.addView(row);
+                    table.addView(divider);
+                }
+            }
+
+            agregadosContainer.addView(table);
         }
 
-        agregadosContainer.addView(table);
+
     }
-
-
-}
