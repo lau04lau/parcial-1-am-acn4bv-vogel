@@ -13,7 +13,6 @@
         android:background="#3d5a80"
         tools:context=".cargarPaciente">
 
-        <!-- Contenedor del formulario con ancho máximo -->
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="44dp"
@@ -22,7 +21,8 @@
             android:layout_marginTop="40dp"
             app:layout_constraintStart_toStartOf="@+id/formContainer"
             app:layout_constraintTop_toTopOf="@+id/formContainer"
-            app:srcCompat="@drawable/icono" />
+            app:srcCompat="@drawable/icono"
+            app:tint="#FFFFFF" />
 
         <LinearLayout
             android:id="@+id/formContainer"
@@ -122,23 +122,6 @@
                     android:textColorHint="#edf8f9" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:textColorHint="#edf8f9"
-                app:boxStrokeColor="#edf8f9"
-                app:hintTextColor="#edf8f9">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/motivoconsulta"
-                    style="@style/EditTextCursorColor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/ingrese_el_motivo_de_consulta"
-                    android:textColor="#edf8f9"
-                    android:textColorHint="#edf8f9" />
-            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -197,6 +180,33 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/cursoLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="@string/ingrese_el_curso_o_grado"
+                android:textColorHint="#edf8f9"
+                app:boxStrokeColor="#edf8f9"
+                app:endIconTint="#edf8f9"
+                app:hintTextColor="#edf8f9"
+                app:startIconTint="#edf8f9">
+
+                <AutoCompleteTextView
+                    android:id="@+id/curso"
+                    style="@style/EditTextCursorColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#edf8f9"
+                    android:inputType="none"
+                    android:minHeight="48dp"
+                    android:padding="12dp"
+                    android:paddingVertical="12dp"
+                    android:popupBackground="#3d5a80"
+                    android:textColor="#edf8f9" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -205,12 +215,11 @@
                 app:hintTextColor="#edf8f9">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/curso"
+                    android:id="@+id/motivoconsulta"
                     style="@style/EditTextCursorColor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/ingrese_el_curso_o_grado"
-                    android:inputType="number"
+                    android:hint="@string/ingrese_el_motivo_de_consulta"
                     android:textColor="#edf8f9"
                     android:textColorHint="#edf8f9" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -227,13 +236,6 @@
                 app:strokeColor="#98c1d9"
                 app:strokeWidth="0.5pt" />
 
-            <LinearLayout
-                android:id="@+id/agregadoslineal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:divider="@android:color/transparent"
-                android:orientation="vertical"
-                android:showDividers="none" />
 
 
         </LinearLayout>
