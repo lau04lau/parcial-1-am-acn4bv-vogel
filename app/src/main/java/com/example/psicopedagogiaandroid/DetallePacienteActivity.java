@@ -1,6 +1,7 @@
 package com.example.psicopedagogiaandroid;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.text.SimpleDateFormat;
@@ -24,5 +25,21 @@ public class DetallePacienteActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.tvCurso)).setText(p != null ? String.valueOf(p.getGradoCurso()) : "");
         ((TextView) findViewById(R.id.tvFecha)).setText(p != null && p.getFechaNac()!=null ? sdf.format(p.getFechaNac()) : "");
         ((TextView) findViewById(R.id.tvMotivo)).setText(p != null && p.getMotivoConsulta()!=null ? p.getMotivoConsulta() : "");
+
+        View btnAtras = findViewById(R.id.fabAtras);
+        View btnHist = findViewById(R.id.fabHistorial);
+        View btnEditar = findViewById(R.id.btnEditar);
+        View btnEliminar = findViewById(R.id.btnEliminar);
+
+        btnAtras.setOnClickListener(v -> finish());
+        btnHist.setOnClickListener(this::onVerHistorial);
+        btnEditar.setOnClickListener(this::onEditar);
+        btnEliminar.setOnClickListener(this::onEliminar);
     }
+
+    public void onVerHistorial(View v) { }
+
+    public void onEditar(View v) { }
+
+    public void onEliminar(View v) { }
 }

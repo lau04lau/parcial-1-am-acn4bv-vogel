@@ -1,32 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     android:background="#3d5a80">
 
-    <ScrollView
-        android:id="@+id/scrollLista"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="88dp"
-        android:fillViewport="true">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <LinearLayout
-            android:id="@+id/listaContainer"
-            android:orientation="vertical"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvListadoTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Listado de Pacientes"
+                android:textColor="#edf8f9"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_centerHorizontal="true"/>
+
+            <ImageButton
+                android:id="@+id/btnAddPatient"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:background="@android:color/transparent"
+                android:contentDescription="Agregar paciente"
+                android:src="@drawable/icono"
+                android:scaleType="centerInside"
+                app:tint="#FFFFFF"/>
+        </RelativeLayout>
+
+        <TableLayout
+            android:id="@+id/tablePacientes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp" />
-    </ScrollView>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|end"
-        android:layout_margin="16dp"
-        app:backgroundTint="#3d5a80"
-        app:tint="#98c1d9"
-        app:srcCompat="@android:drawable/ic_input_add" />
-</FrameLayout>
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
+</ScrollView>

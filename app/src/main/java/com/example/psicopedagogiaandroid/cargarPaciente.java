@@ -46,7 +46,6 @@ public class cargarPaciente extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle bundle = getIntent().getExtras();
-
         if (bundle != null && bundle.get("pacientes") instanceof ArrayList) {
             pacientes = (ArrayList<Paciente>) bundle.get("pacientes");
         } else {
@@ -59,12 +58,12 @@ public class cargarPaciente extends AppCompatActivity {
         fechaNac = findViewById(R.id.fechaNac);
         gradoCurso = findViewById(R.id.curso);
 
-        String[] opciones = {"Inicial", "Primario", "Secundario", "Terciario", "Universitario", "Posgrado"};
+        String[] opciones = {"Inicial","Primario","Secundario","Terciario","Universitario","Posgrado"};
         ArrayAdapter<String> adaptador = new ArrayAdapter<>(this, R.layout.spinner_dropdown_item, opciones);
         nivelEdu.setAdapter(adaptador);
         nivelEdu.setOnClickListener(v -> nivelEdu.showDropDown());
 
-        String[] cursos = {"1", "2", "3", "4", "5", "6", "7"};
+        String[] cursos = {"1","2","3","4","5","6","7"};
         ArrayAdapter<String> adaptCurso = new ArrayAdapter<>(this, R.layout.spinner_dropdown_item, cursos);
         gradoCurso.setAdapter(adaptCurso);
         gradoCurso.setOnClickListener(v -> gradoCurso.showDropDown());
@@ -106,10 +105,9 @@ public class cargarPaciente extends AppCompatActivity {
         gradoCurso = findViewById(R.id.curso);
         nivelEducativo = findViewById(R.id.nivelEdu);
 
-
         String vNombre = nombre.getText() != null ? nombre.getText().toString().trim() : "";
         String vApellido = apellido.getText() != null ? apellido.getText().toString().trim() : "";
-        String vDni = dni.getText() != null ? dni.getText().toString().replaceAll("\\D", "") : "";
+        String vDni = dni.getText() != null ? dni.getText().toString().replaceAll("\\D","") : "";
         String vTelefono = telefono.getText() != null ? telefono.getText().toString().trim() : "";
         String vMotivo = motivoConsulta.getText() != null ? motivoConsulta.getText().toString().trim() : "";
         String vNivel = nivelEducativo.getText() != null ? nivelEducativo.getText().toString().trim() : "";
@@ -117,32 +115,24 @@ public class cargarPaciente extends AppCompatActivity {
         String vFechaTxt = fechaNacimiento.getText() != null ? fechaNacimiento.getText().toString().trim() : "";
 
         StringBuilder errores = new StringBuilder();
-
-        if (vNombre.isEmpty() || !vNombre.matches("[A-Za-zÁÉÍÓÚÑáéíóúñ\\s'-]{2,}"))
-            errores.append("• Nombre inválido\n");
-        if (vApellido.isEmpty() || !vApellido.matches("[A-Za-zÁÉÍÓÚÑáéíóúñ\\s'-]{2,}"))
-            errores.append("• Apellido inválido\n");
+        if (vNombre.isEmpty() || !vNombre.matches("[A-Za-zÁÉÍÓÚÑáéíóúñ\\s'-]{2,}")) errores.append("• Nombre inválido\n");
+        if (vApellido.isEmpty() || !vApellido.matches("[A-Za-zÁÉÍÓÚÑáéíóúñ\\s'-]{2,}")) errores.append("• Apellido inválido\n");
         if (vDni.isEmpty() || !vDni.matches("\\d{7,10}")) errores.append("• DNI inválido\n");
         if (!vDni.isEmpty()) {
             boolean dniExiste = false;
             if (pacientes != null) {
                 for (Paciente px : pacientes) {
-                    String pd = px != null && px.getDni() != null ? px.getDni().replaceAll("\\D", "") : "";
-                    if (!pd.isEmpty() && vDni.equals(pd)) {
-                        dniExiste = true;
-                        break;
-                    }
+                    String pd = px != null && px.getDni() != null ? px.getDni().replaceAll("\\D","") : "";
+                    if (!pd.isEmpty() && vDni.equals(pd)) { dniExiste = true; break; }
                 }
             }
             if (dniExiste) errores.append("• DNI ya registrado\n");
         }
-        String telDigits = vTelefono.replaceAll("\\D", "");
-        if (vTelefono.isEmpty() || telDigits.length() < 7 || telDigits.length() > 20)
-            errores.append("• Teléfono inválido\n");
+        String telDigits = vTelefono.replaceAll("\\D","");
+        if (vTelefono.isEmpty() || telDigits.length() < 7 || telDigits.length() > 20) errores.append("• Teléfono inválido\n");
         if (vMotivo.length() < 3) errores.append("• Motivo de consulta inválido\n");
         if (vNivel.isEmpty()) errores.append("• Seleccione el nivel educativo\n");
-        if (vCurso.isEmpty() || !vCurso.matches("[1-7]"))
-            errores.append("• Seleccione un curso entre 1 y 7\n");
+        if (vCurso.isEmpty() || !vCurso.matches("[1-7]")) errores.append("• Seleccione un curso entre 1 y 7\n");
         if (vFechaTxt.isEmpty()) errores.append("• Complete la fecha de nacimiento\n");
 
         Date fechaValida = null;
@@ -197,11 +187,9 @@ public class cargarPaciente extends AppCompatActivity {
                     Intent i = new Intent(this, ListaPacientesActivity.class);
                     i.putExtra("pacientes", pacientes);
                     startActivity(i);
-                    limpiarFormulario();
                     finish();
                 })
                 .setNegativeButton("Cancelar", null)
                 .show();
     }
-
 }

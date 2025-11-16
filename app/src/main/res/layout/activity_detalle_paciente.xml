@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3d5a80">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Detalle del Paciente"
+                android:textColor="#edf8f9"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:paddingBottom="16dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre"
+                android:textColor="#edf8f9"/>
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#edf8f9"
+                android:paddingBottom="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Apellido"
+                android:textColor="#edf8f9"/>
+            <TextView
+                android:id="@+id/tvApellido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#edf8f9"
+                android:paddingBottom="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DNI"
+                android:textColor="#edf8f9"/>
+            <TextView
+                android:id="@+id/tvDni"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#edf8f9"
+                android:paddingBottom="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Teléfono"
+                android:textColor="#edf8f9"/>
+            <TextView
+                android:id="@+id/tvTelefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#edf8f9"
+                android:paddingBottom="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nivel educativo"
+                android:textColor="#edf8f9"/>
+            <TextView
+                android:id="@+id/tvNivel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#edf8f9"
+                android:paddingBottom="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Curso/Grado"
+                android:textColor="#edf8f9"/>
+            <TextView
+                android:id="@+id/tvCurso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#edf8f9"
+                android:paddingBottom="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fecha de nacimiento"
+                android:textColor="#edf8f9"/>
+            <TextView
+                android:id="@+id/tvFecha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#edf8f9"
+                android:paddingBottom="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Motivo de consulta"
+                android:textColor="#edf8f9"/>
+            <TextView
+                android:id="@+id/tvMotivo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#edf8f9"
+                android:paddingBottom="12dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="start">
+
+                <ImageButton
+                    android:id="@+id/btnEditar"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/editar"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Editar"
+                    app:tint="#FFFFFF"
+                    android:scaleType="centerInside"
+                    android:layout_marginEnd="8dp"/>
+
+                <ImageButton
+                    android:id="@+id/btnEliminar"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/eliminar"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Eliminar"
+                    app:tint="#FFFFFF"
+                    android:scaleType="centerInside"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:visibility="invisible"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_gravity="bottom"
+        android:padding="16dp"
+        android:paddingBottom="24dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/fabAtras"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="Atrás"
+            android:textAllCaps="false"
+            android:backgroundTint="#3d5a80"
+            android:textColor="#98c1d9"
+            app:rippleColor="#98c1d9"
+            app:strokeColor="#98c1d9"
+            app:strokeWidth="0.5dp"
+            app:cornerRadius="24dp"
+            android:layout_marginEnd="12dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/fabHistorial"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="Ver historial"
+            android:textAllCaps="false"
+            android:backgroundTint="#3d5a80"
+            android:textColor="#98c1d9"
+            app:rippleColor="#98c1d9"
+            app:strokeColor="#98c1d9"
+            app:strokeWidth="0.5dp"
+            app:cornerRadius="24dp"/>
+    </LinearLayout>
+
+</FrameLayout>
