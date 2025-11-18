@@ -6,7 +6,9 @@ import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 
 public class ListaPacientesActivity extends AppCompatActivity {
@@ -19,7 +21,9 @@ public class ListaPacientesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista_pacientes);
 
         pacientes = (ArrayList<Paciente>) getIntent().getSerializableExtra("pacientes");
-        if (pacientes == null) pacientes = new ArrayList<>();
+        if (pacientes == null) {
+            pacientes = new ArrayList<>();
+        }
 
         ImageButton btnAdd = findViewById(R.id.btnAddPatient);
         btnAdd.setOnClickListener(v -> {
@@ -59,15 +63,18 @@ public class ListaPacientesActivity extends AppCompatActivity {
                     0, TableRow.LayoutParams.WRAP_CONTENT, 1f));
             header.addView(tv);
         }
+
         table.addView(header);
 
-        android.view.View separator = new android.view.View(this);
-        separator.setLayoutParams(new TableRow.LayoutParams(
+        android.view.View headerDivider = new android.view.View(this);
+        headerDivider.setLayoutParams(new TableRow.LayoutParams(
                 TableRow.LayoutParams.MATCH_PARENT, 1));
-        separator.setBackgroundColor(colorBorde);
-        table.addView(separator);
+        headerDivider.setBackgroundColor(colorBorde);
+        table.addView(headerDivider);
 
-        for (Paciente p : pacientes) {
+        for (int index = 0; index < pacientes.size(); index++) {
+            Paciente p = pacientes.get(index);
+
             TableRow row = new TableRow(this);
             row.setBackgroundColor(colorFondo);
             row.setPadding(1, 1, 1, 1);
@@ -92,11 +99,14 @@ public class ListaPacientesActivity extends AppCompatActivity {
                 row.addView(tv);
 
                 if (i == 0) {
-                    final Paciente seleccionado = p;
+                    final int pos = index;
                     tv.setOnClickListener(v -> {
                         Intent d = new Intent(this, DetallePacienteActivity.class);
-                        d.putExtra("paciente", seleccionado);
+                        d.putExtra("paciente", pacientes.get(pos));
+                        d.putExtra("pacientes", pacientes);
+                        d.putExtra("indice", pos);
                         startActivity(d);
+                        finish();
                     });
                 }
             }

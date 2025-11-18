@@ -1,6 +1,17 @@
 <resources>
+
     <style name="Theme.PsicopedagogiaAndroid" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">#3d5a80</item>
         <item name="colorControlActivated">#edf8f9</item>
+        <item name="android:textSelectHandle">@drawable/handle_color</item>
+        <item name="android:textSelectHandleLeft">@drawable/handle_color</item>
+        <item name="android:textSelectHandleRight">@drawable/handle_color</item>
     </style>
+
+    <style name="Theme.PsicopedagogiaAndroid.DatePicker" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">#3d5a80</item>
+        <item name="android:textColorPrimary">#3d5a80</item>
+        <item name="android:textColor">#3d5a80</item>
+    </style>
+
 </resources>
