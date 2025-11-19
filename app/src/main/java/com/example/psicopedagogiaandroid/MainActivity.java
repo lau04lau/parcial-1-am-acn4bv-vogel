@@ -3,12 +3,15 @@ package com.example.psicopedagogiaandroid;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private final ArrayList<Paciente> pacientes = new ArrayList<>();
+    private final ArrayList<Historial> historial = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     public void btnPacientes(View v) {
         Intent i = new Intent(MainActivity.this, ListaPacientesActivity.class);
         i.putExtra("pacientes", pacientes);
+        i.putExtra("historial", historial);
         startActivity(i);
     }
 }

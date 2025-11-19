@@ -1,5 +1,6 @@
 package com.example.psicopedagogiaandroid;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ public class DetallePacienteActivity extends AppCompatActivity {
 
     private Paciente paciente;
     private ArrayList<Paciente> pacientes;
+    private ArrayList<Historial> historial;
     private int indice;
 
     @Override
@@ -25,10 +27,14 @@ public class DetallePacienteActivity extends AppCompatActivity {
         Intent intent = getIntent();
         paciente = (Paciente) intent.getSerializableExtra("paciente");
         pacientes = (ArrayList<Paciente>) intent.getSerializableExtra("pacientes");
+        historial = (ArrayList<Historial>) intent.getSerializableExtra("historial");
         indice = intent.getIntExtra("indice", -1);
 
         if (pacientes == null) {
             pacientes = new ArrayList<>();
+        }
+        if (historial == null) {
+            historial = new ArrayList<>();
         }
 
         TextView tvNombre = findViewById(R.id.tvNombre);
@@ -71,11 +77,26 @@ public class DetallePacienteActivity extends AppCompatActivity {
     private void volverALista() {
         Intent i = new Intent(this, ListaPacientesActivity.class);
         i.putExtra("pacientes", pacientes);
+        i.putExtra("historial", historial);
         startActivity(i);
         finish();
     }
 
     public void onVerHistorial(View v) {
+        if (paciente == null) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Sin paciente")
+                    .setMessage("No se encontró el paciente para ver su historial.")
+                    .setPositiveButton("Aceptar", null)
+                    .show();
+            return;
+        }
+        Intent i = new Intent(this, ListaHistorialActivity.class);
+        i.putExtra("historial", historial);
+        i.putExtra("pacientes", pacientes);
+        i.putExtra("pacienteSeleccionado", paciente);
+        startActivity(i);
+        finish();
     }
 
     public void onEditar(View v) {
@@ -91,9 +112,19 @@ public class DetallePacienteActivity extends AppCompatActivity {
     }
 
     public void onEliminar(View v) {
-        if (indice >= 0 && indice < pacientes.size()) {
-            pacientes.remove(indice);
+        if (indice < 0 || indice >= pacientes.size()) {
+            volverALista();
+            return;
         }
-        volverALista();
+
+        new AlertDialog.Builder(this)
+                .setTitle("Eliminar paciente")
+                .setMessage("¿Deseás eliminar a este paciente?")
+                .setPositiveButton("Eliminar", (dialog, which) -> {
+                    pacientes.remove(indice);
+                    volverALista();
+                })
+                .setNegativeButton("Cancelar", null)
+                .show();
     }
 }

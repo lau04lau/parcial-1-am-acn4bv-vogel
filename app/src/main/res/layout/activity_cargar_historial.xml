@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f8eef6"
+    android:padding="20dp"
+    tools:context=".CargarHistorialActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <AutoCompleteTextView
+            android:id="@+id/h_paciente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Paciente"
+            android:backgroundTint="#3d5a80"
+            android:textColor="#3d5a80"
+            android:textColorHint="#3d5a80" />
+
+        <AutoCompleteTextView
+            android:id="@+id/h_tipo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tipo de registro"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#3d5a80"
+            android:textColor="#3d5a80"
+            android:textColorHint="#3d5a80" />
+
+        <EditText
+            android:id="@+id/h_fecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Fecha"
+            android:focusable="false"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#3d5a80"
+            android:textColor="#3d5a80"
+            android:textColorHint="#3d5a80" />
+
+        <EditText
+            android:id="@+id/h_descripcion"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:gravity="top"
+            android:layout_marginTop="16dp"
+            android:hint="Descripción"
+            android:backgroundTint="#3d5a80"
+            android:textColor="#3d5a80"
+            android:textColorHint="#3d5a80" />
+
+        <Button
+            android:id="@+id/btnGuardarHistorial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guardar"
+            android:textColor="#edf8f9"
+            android:backgroundTint="#3d5a80"
+            android:layout_marginTop="24dp"/>
+    </LinearLayout>
+
+</ScrollView>

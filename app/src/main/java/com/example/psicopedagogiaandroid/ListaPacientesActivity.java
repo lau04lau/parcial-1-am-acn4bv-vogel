@@ -14,15 +14,22 @@ import java.util.ArrayList;
 public class ListaPacientesActivity extends AppCompatActivity {
 
     private ArrayList<Paciente> pacientes;
+    private ArrayList<Historial> historial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_pacientes);
 
-        pacientes = (ArrayList<Paciente>) getIntent().getSerializableExtra("pacientes");
+        Intent intent = getIntent();
+        pacientes = (ArrayList<Paciente>) intent.getSerializableExtra("pacientes");
+        historial = (ArrayList<Historial>) intent.getSerializableExtra("historial");
+
         if (pacientes == null) {
             pacientes = new ArrayList<>();
+        }
+        if (historial == null) {
+            historial = new ArrayList<>();
         }
 
         ImageButton btnAdd = findViewById(R.id.btnAddPatient);
@@ -105,6 +112,7 @@ public class ListaPacientesActivity extends AppCompatActivity {
                         d.putExtra("paciente", pacientes.get(pos));
                         d.putExtra("pacientes", pacientes);
                         d.putExtra("indice", pos);
+                        d.putExtra("historial", historial);
                         startActivity(d);
                         finish();
                     });

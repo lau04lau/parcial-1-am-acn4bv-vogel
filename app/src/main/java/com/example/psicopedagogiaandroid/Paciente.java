@@ -59,7 +59,7 @@ import java.util.Objects;
 
         public void setDni(String dni) {
             if (dni == null || !dni.matches("\\d{7,10}")) {
-                throw new IllegalArgumentException("DNI invÃƒÂ¡lido (debe contener 7 a 10 dÃƒÂ­gitos)");
+                throw new IllegalArgumentException("DNI inválido (debe contener 7 a 10 dígitos)");
             }
             this.dni = dni;
         }
@@ -68,7 +68,7 @@ import java.util.Objects;
 
         public void setTelefono(String telefono) {
             if (telefono == null || !telefono.matches("[+\\d()\\s-]{6,20}")) {
-                throw new IllegalArgumentException("TelÃƒÂ©fono invÃƒÂ¡lido");
+                throw new IllegalArgumentException("Teléfono inválido");
             }
             this.telefono = telefono.trim();
         }
@@ -106,7 +106,7 @@ import java.util.Objects;
 
         public void setNivelEducativo(String nivelEducativo) {
             if (nivelEducativo == null || nivelEducativo.trim().isEmpty()) {
-                throw new IllegalArgumentException("El nivel educativo no puede estar vacÃƒÂ­o");
+                throw new IllegalArgumentException("El nivel educativo no puede estar vacío");
             }
             this.nivelEducativo = nivelEducativo.trim();
         }

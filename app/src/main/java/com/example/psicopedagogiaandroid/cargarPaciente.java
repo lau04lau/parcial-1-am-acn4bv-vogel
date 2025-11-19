@@ -149,7 +149,7 @@ public class cargarPaciente extends AppCompatActivity {
         if (vNombre.isEmpty()) errores.append("• El nombre es obligatorio\n");
         if (vApellido.isEmpty()) errores.append("• El apellido es obligatorio\n");
         if (vDni.isEmpty()) errores.append("• El DNI es obligatorio\n");
-        if (vTelefono.isEmpty()) errores.append("• El teléfono es obligatorio\n");
+        if (vTelefono.isEmpty()) errores.append("• El telefono es obligatorio\n");
         if (vFecha.isEmpty()) errores.append("• La fecha de nacimiento es obligatoria\n");
         if (vNivel.isEmpty()) errores.append("• El nivel educativo es obligatorio\n");
         if (vGrado.isEmpty()) errores.append("• El grado/curso es obligatorio\n");
