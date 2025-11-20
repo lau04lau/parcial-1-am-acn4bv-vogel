@@ -9,8 +9,8 @@
 
     <ImageButton
         android:id="@+id/btnAddHistorial"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="@dimen/button_fab_size"
+        android:layout_height="@dimen/button_fab_size"
         android:background="@android:color/transparent"
         android:src="@drawable/agregar"
         app:tint="#3d5a80"
@@ -19,14 +19,14 @@
         android:contentDescription="@string/agregarHistorialDescripcion"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp" />
+        android:layout_marginTop="@dimen/margin_l"
+        android:layout_marginEnd="@dimen/margin_l" />
 
     <ScrollView
         android:id="@+id/scrollHistorial"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:padding="16dp"
+        android:padding="@dimen/margin_l"
         app:layout_constraintTop_toBottomOf="@id/btnAddHistorial"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

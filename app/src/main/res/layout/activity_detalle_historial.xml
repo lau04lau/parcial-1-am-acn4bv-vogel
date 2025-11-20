@@ -11,7 +11,7 @@
         android:id="@+id/scrollDetalleHistorial"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:padding="24dp"
+        android:padding="@dimen/margin_xl"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/contenedorBotones"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,33 +27,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#3d5a80"
-                android:textSize="20sp"
+                android:textSize="@dimen/text_subtitle"
                 android:textStyle="bold"
-                android:layout_marginBottom="12dp" />
+                android:layout_marginBottom="@dimen/margin_m" />
 
             <TextView
                 android:id="@+id/dhFecha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#3d5a80"
-                android:textSize="18sp"
-                android:layout_marginBottom="12dp" />
+                android:textSize="@dimen/text_normal"
+                android:layout_marginBottom="@dimen/margin_m" />
 
             <TextView
                 android:id="@+id/dhTipo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#3d5a80"
-                android:textSize="18sp"
-                android:layout_marginBottom="12dp" />
+                android:textSize="@dimen/text_normal"
+                android:layout_marginBottom="@dimen/margin_m" />
 
             <TextView
                 android:id="@+id/dhDescripcion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#3d5a80"
-                android:textSize="18sp"
-                android:layout_marginBottom="12dp" />
+                android:textSize="@dimen/text_normal"
+                android:layout_marginBottom="@dimen/margin_m" />
 
         </LinearLayout>
     </ScrollView>
@@ -64,49 +64,49 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="@dimen/detail_buttons_margin_bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageButton
             android:id="@+id/dhEditar"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="@dimen/detail_buttons_icon_size"
+            android:layout_height="@dimen/detail_buttons_icon_size"
             android:background="@android:color/transparent"
             android:src="@drawable/editardoc"
             android:contentDescription="@string/editarDescripcion"
             app:tint="#3d5a80"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
-            android:padding="4dp"
-            android:layout_marginHorizontal="12dp" />
+            android:padding="@dimen/padding_xs"
+            android:layout_marginHorizontal="@dimen/margin_m" />
 
         <ImageButton
             android:id="@+id/dhEliminar"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="@dimen/detail_buttons_icon_size"
+            android:layout_height="@dimen/detail_buttons_icon_size"
             android:background="@android:color/transparent"
             android:src="@drawable/eliminardoc"
             android:contentDescription="@string/eliminarDescripcion"
             app:tint="#3d5a80"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
-            android:padding="4dp"
-            android:layout_marginHorizontal="12dp" />
+            android:padding="@dimen/padding_xs"
+            android:layout_marginHorizontal="@dimen/margin_m" />
 
         <ImageButton
             android:id="@+id/dhVolver"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="@dimen/detail_buttons_icon_size"
+            android:layout_height="@dimen/detail_buttons_icon_size"
             android:background="@android:color/transparent"
             android:src="@drawable/atras"
             android:contentDescription="@string/volverDescripcion"
             app:tint="#3d5a80"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
-            android:padding="4dp"
-            android:layout_marginHorizontal="12dp" />
+            android:padding="@dimen/padding_xs"
+            android:layout_marginHorizontal="@dimen/margin_m" />
 
     </LinearLayout>
 

@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="@dimen/margin_l">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -23,13 +23,13 @@
                 android:text="@string/listadoPacientesText"
                 android:textColor="#edf8f9"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="@dimen/text_title"
                 android:layout_centerHorizontal="true"/>
 
             <ImageButton
                 android:id="@+id/btnAddPatient"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/icon_m"
+                android:layout_height="@dimen/icon_m"
                 android:layout_alignParentEnd="true"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/agregarPacienteDescripcion"
@@ -42,6 +42,6 @@
             android:id="@+id/tablePacientes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="@dimen/margin_l" />
     </LinearLayout>
 </ScrollView>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f8eef6"
-    android:padding="20dp"
+    android:padding="@dimen/section_spacing"
     tools:context=".CargarHistorialActivity">
 
     <LinearLayout
@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/tipoRegistroHint"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/margin_l"
             android:backgroundTint="#3d5a80"
             android:textColor="#3d5a80"
             android:textColorHint="#3d5a80" />
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/fechaHint"
             android:focusable="false"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/margin_l"
             android:backgroundTint="#3d5a80"
             android:textColor="#3d5a80"
             android:textColorHint="#3d5a80" />
@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:gravity="top"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/margin_l"
             android:hint="@string/descripcionHint"
             android:backgroundTint="#3d5a80"
             android:textColor="#3d5a80"
@@ -60,7 +60,7 @@
             android:text="@string/guardarBtnText"
             android:textColor="#edf8f9"
             android:backgroundTint="#3d5a80"
-            android:layout_marginTop="24dp"/>
+            android:layout_marginTop="@dimen/margin_xl" />
     </LinearLayout>
 
 </ScrollView>

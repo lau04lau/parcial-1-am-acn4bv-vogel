@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="@dimen/margin_l">
 
             <TextView
                 android:id="@+id/tvTitulo"
@@ -22,10 +22,10 @@
                 android:layout_height="wrap_content"
                 android:text="@string/detallePacienteText"
                 android:textColor="#edf8f9"
-                android:textSize="20sp"
+                android:textSize="@dimen/text_title"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:paddingBottom="16dp"/>
+                android:paddingBottom="@dimen/margin_l"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#edf8f9"
-                android:paddingBottom="8dp"/>
+                android:paddingBottom="@dimen/margin_s"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#edf8f9"
-                android:paddingBottom="8dp"/>
+                android:paddingBottom="@dimen/margin_s"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#edf8f9"
-                android:paddingBottom="8dp"/>
+                android:paddingBottom="@dimen/margin_s"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#edf8f9"
-                android:paddingBottom="8dp"/>
+                android:paddingBottom="@dimen/margin_s"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -85,7 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#edf8f9"
-                android:paddingBottom="8dp"/>
+                android:paddingBottom="@dimen/margin_s"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -97,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#edf8f9"
-                android:paddingBottom="8dp"/>
+                android:paddingBottom="@dimen/margin_s"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -109,7 +109,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#edf8f9"
-                android:paddingBottom="8dp"/>
+                android:paddingBottom="@dimen/margin_s"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -121,7 +121,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#edf8f9"
-                android:paddingBottom="12dp"/>
+                android:paddingBottom="@dimen/margin_m"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -131,19 +131,19 @@
 
                 <ImageButton
                     android:id="@+id/btnEditar"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="@dimen/detail_buttons_icon_size"
+                    android:layout_height="@dimen/detail_buttons_icon_size"
                     android:src="@drawable/editar"
                     android:background="@android:color/transparent"
                     android:contentDescription="@string/editarDescripcion"
                     app:tint="#FFFFFF"
                     android:scaleType="centerInside"
-                    android:layout_marginEnd="8dp"/>
+                    android:layout_marginEnd="@dimen/margin_s"/>
 
                 <ImageButton
                     android:id="@+id/btnEliminar"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="@dimen/detail_buttons_icon_size"
+                    android:layout_height="@dimen/detail_buttons_icon_size"
                     android:src="@drawable/eliminar"
                     android:background="@android:color/transparent"
                     android:contentDescription="@string/eliminarDescripcion"
@@ -153,9 +153,8 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="@dimen/bottom_space_detail"
                 android:visibility="invisible"/>
-
         </LinearLayout>
     </ScrollView>
 
@@ -165,35 +164,35 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_gravity="bottom"
-        android:padding="16dp"
-        android:paddingBottom="24dp">
+        android:padding="@dimen/margin_l"
+        android:paddingBottom="@dimen/margin_xl">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/fabAtras"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_height="@dimen/button_height"
             android:text="@string/atrasBtnText"
             android:textAllCaps="false"
             android:backgroundTint="#3d5a80"
             android:textColor="#98c1d9"
             app:rippleColor="#98c1d9"
             app:strokeColor="#98c1d9"
-            app:strokeWidth="0.5dp"
-            app:cornerRadius="24dp"
-            android:layout_marginEnd="12dp"/>
+            app:strokeWidth="@dimen/button_stroke"
+            app:cornerRadius="@dimen/button_radius"
+            android:layout_marginEnd="@dimen/margin_m"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/fabHistorial"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_height="@dimen/button_height"
             android:text="@string/verHistorialBtnText"
             android:textAllCaps="false"
             android:backgroundTint="#3d5a80"
             android:textColor="#98c1d9"
             app:rippleColor="#98c1d9"
             app:strokeColor="#98c1d9"
-            app:strokeWidth="0.5dp"
-            app:cornerRadius="24dp"/>
+            app:strokeWidth="@dimen/button_stroke"
+            app:cornerRadius="@dimen/button_radius"/>
     </LinearLayout>
 
 </FrameLayout>

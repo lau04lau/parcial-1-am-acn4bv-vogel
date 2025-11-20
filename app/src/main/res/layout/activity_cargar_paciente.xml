@@ -15,10 +15,10 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="44dp"
-            android:layout_height="58dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="40dp"
+            android:layout_width="@dimen/icon_width"
+            android:layout_height="@dimen/icon_height"
+            android:layout_marginStart="@dimen/margin_xl"
+            android:layout_marginTop="@dimen/margin_xxl"
             app:layout_constraintStart_toStartOf="@+id/formContainer"
             app:layout_constraintTop_toTopOf="@+id/formContainer"
             app:srcCompat="@drawable/icono"
@@ -29,10 +29,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp"
+            android:padding="@dimen/section_spacing"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_max="600dp">
@@ -41,19 +40,19 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:paddingVertical="12pt"
+                android:layout_marginBottom="@dimen/margin_xl"
+                android:paddingVertical="@dimen/padding_l"
                 android:text="@string/agregar_paciente"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="#edf8f9"
-                android:textSize="24sp"
+                android:textSize="@dimen/title_text"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="@dimen/margin_m"
                 android:textColorHint="#edf8f9"
                 app:boxStrokeColor="#edf8f9"
                 app:hintTextColor="#edf8f9">
@@ -71,7 +70,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="@dimen/margin_m"
                 android:textColorHint="#edf8f9"
                 app:boxStrokeColor="#edf8f9"
                 app:hintTextColor="#edf8f9">
@@ -89,7 +88,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="@dimen/margin_m"
                 android:textColorHint="#edf8f9"
                 app:boxStrokeColor="#edf8f9"
                 app:hintTextColor="#edf8f9">
@@ -107,7 +106,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="@dimen/margin_m"
                 android:textColorHint="#edf8f9"
                 app:boxStrokeColor="#edf8f9"
                 app:hintTextColor="#edf8f9">
@@ -122,11 +121,10 @@
                     android:textColorHint="#edf8f9" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="@dimen/margin_m"
                 android:hint="@string/fecha_de_nacimiento"
                 android:textColorHint="#edf8f9"
                 app:boxStrokeColor="#edf8f9"
@@ -140,7 +138,7 @@
                     android:clickable="true"
                     android:focusable="false"
                     android:inputType="none"
-                    android:padding="12dp"
+                    android:padding="@dimen/padding_m"
                     android:textColor="#edf8f9"
                     android:textColorHint="#edf8f9" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -150,33 +148,22 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="@dimen/margin_m"
                 android:hint="@string/nivel_educativo"
-                android:labelFor="@id/nivelEdu"
                 android:textColorHint="#edf8f9"
                 app:boxStrokeColor="#edf8f9"
                 app:endIconTint="#edf8f9"
-                app:hintTextColor="#edf8f9"
-                app:startIconTint="#edf8f9">
+                app:hintTextColor="#edf8f9">
 
                 <AutoCompleteTextView
                     android:id="@+id/nivelEdu"
                     style="@style/EditTextCursorColor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#edf8f9"
-                    android:dropDownWidth="match_parent"
-                    android:dropDownHeight="wrap_content"
-                    android:dropDownHorizontalOffset="0dp"
-                    android:dropDownVerticalOffset="8dp"
-                    android:hint="@string/nivel_educativo"
-                    android:inputType="none"
-                    android:minHeight="48dp"
-                    android:padding="12dp"
-                    android:paddingVertical="12dp"
+                    android:padding="@dimen/padding_m"
+                    android:minHeight="@dimen/input_height"
                     android:popupBackground="#3d5a80"
-                    android:textColor="#edf8f9"
-                    tools:ignore="LabelFor" />
+                    android:textColor="#edf8f9" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -184,24 +171,20 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="@dimen/margin_l"
                 android:hint="@string/ingrese_el_curso_o_grado"
                 android:textColorHint="#edf8f9"
                 app:boxStrokeColor="#edf8f9"
                 app:endIconTint="#edf8f9"
-                app:hintTextColor="#edf8f9"
-                app:startIconTint="#edf8f9">
+                app:hintTextColor="#edf8f9">
 
                 <AutoCompleteTextView
                     android:id="@+id/curso"
                     style="@style/EditTextCursorColor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#edf8f9"
-                    android:inputType="none"
-                    android:minHeight="48dp"
-                    android:padding="12dp"
-                    android:paddingVertical="12dp"
+                    android:padding="@dimen/padding_m"
+                    android:minHeight="@dimen/input_height"
                     android:popupBackground="#3d5a80"
                     android:textColor="#edf8f9" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -209,7 +192,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="@dimen/margin_l"
                 android:textColorHint="#edf8f9"
                 app:boxStrokeColor="#edf8f9"
                 app:hintTextColor="#edf8f9">
@@ -229,14 +212,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#3d5a80"
-                android:minHeight="48dp"
+                android:minHeight="@dimen/button_height"
                 android:text="@string/agregar"
                 android:textColor="#98c1d9"
-                app:rippleColor="#98c1d9"
-                app:strokeColor="#98c1d9"
-                app:strokeWidth="0.5pt" />
-
-
+                android:layout_marginTop="@dimen/margin_xl" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

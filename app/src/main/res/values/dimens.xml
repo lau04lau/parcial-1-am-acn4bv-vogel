@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="margin_xs">4dp</dimen>
+    <dimen name="margin_s">8dp</dimen>
+    <dimen name="margin_m">12dp</dimen>
+    <dimen name="margin_l">16dp</dimen>
+    <dimen name="margin_xl">24dp</dimen>
+    <dimen name="margin_xxl">32dp</dimen>
+    <dimen name="margin_xxxl">48dp</dimen>
+
+    <dimen name="padding_xs">4dp</dimen>
+    <dimen name="padding_s">8dp</dimen>
+    <dimen name="padding_m">12dp</dimen>
+    <dimen name="padding_l">16dp</dimen>
+
+    <dimen name="text_title">22sp</dimen>
+    <dimen name="text_subtitle">20sp</dimen>
+    <dimen name="text_normal">16sp</dimen>
+    <dimen name="text_small">14sp</dimen>
+
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="button_fab_size">56dp</dimen>
+    <dimen name="button_icon_size">24dp</dimen>
+
+    <dimen name="icon_s">16dp</dimen>
+    <dimen name="icon_m">24dp</dimen>
+    <dimen name="icon_l">32dp</dimen>
+    <dimen name="icon_xl">40dp</dimen>
+
+    <dimen name="input_height">48dp</dimen>
+    <dimen name="input_padding">12dp</dimen>
+
+    <dimen name="table_padding">8dp</dimen>
+    <dimen name="table_divider">1dp</dimen>
+
+    <dimen name="section_spacing">20dp</dimen>
+
+    <dimen name="logo_size">220dp</dimen>
+
+    <dimen name="detail_buttons_margin_bottom">32dp</dimen>
+    <dimen name="detail_buttons_icon_size">56dp</dimen>
+
+    <dimen name="bottom_space_detail">48dp</dimen>
+    <dimen name="button_stroke">0.5dp</dimen>
+    <dimen name="button_radius">24dp</dimen>
+
+    <dimen name="title_text">24sp</dimen>
+    <dimen name="icon_width">44dp</dimen>
+    <dimen name="icon_height">58dp</dimen>
+
+</resources>
