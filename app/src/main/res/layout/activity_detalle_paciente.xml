@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3d5a80">
+    android:background="@color/colorPrimary">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/detallePacienteText"
-                android:textColor="#edf8f9"
+                android:textColor="@color/colorPrimaryLight"
                 android:textSize="@dimen/text_title"
                 android:textStyle="bold"
                 android:gravity="center"
@@ -31,96 +31,104 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/nombreText"
-                android:textColor="#edf8f9"/>
+                android:textColor="@color/colorPrimaryLight"/>
+
             <TextView
                 android:id="@+id/tvNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#edf8f9"
+                android:textColor="@color/colorPrimaryLight"
                 android:paddingBottom="@dimen/margin_s"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/apellidoText"
-                android:textColor="#edf8f9"/>
+                android:textColor="@color/colorPrimaryLight"/>
+
             <TextView
                 android:id="@+id/tvApellido"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#edf8f9"
+                android:textColor="@color/colorPrimaryLight"
                 android:paddingBottom="@dimen/margin_s"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/dniText"
-                android:textColor="#edf8f9"/>
+                android:textColor="@color/colorPrimaryLight"/>
+
             <TextView
                 android:id="@+id/tvDni"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#edf8f9"
+                android:textColor="@color/colorPrimaryLight"
                 android:paddingBottom="@dimen/margin_s"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/telefonoText"
-                android:textColor="#edf8f9"/>
+                android:textColor="@color/colorPrimaryLight"/>
+
             <TextView
                 android:id="@+id/tvTelefono"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#edf8f9"
+                android:textColor="@color/colorPrimaryLight"
                 android:paddingBottom="@dimen/margin_s"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/nivelEducativoText"
-                android:textColor="#edf8f9"/>
+                android:textColor="@color/colorPrimaryLight"/>
+
             <TextView
                 android:id="@+id/tvNivel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#edf8f9"
+                android:textColor="@color/colorPrimaryLight"
                 android:paddingBottom="@dimen/margin_s"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/cursoGradoText"
-                android:textColor="#edf8f9"/>
+                android:textColor="@color/colorPrimaryLight"/>
+
             <TextView
                 android:id="@+id/tvCurso"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#edf8f9"
+                android:textColor="@color/colorPrimaryLight"
                 android:paddingBottom="@dimen/margin_s"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/fechaNacimientoText"
-                android:textColor="#edf8f9"/>
+                android:textColor="@color/colorPrimaryLight"/>
+
             <TextView
                 android:id="@+id/tvFecha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#edf8f9"
+                android:textColor="@color/colorPrimaryLight"
                 android:paddingBottom="@dimen/margin_s"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/motivoConsulta"
-                android:textColor="#edf8f9"/>
+                android:textColor="@color/colorPrimaryLight"/>
+
             <TextView
                 android:id="@+id/tvMotivo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#edf8f9"
+                android:textColor="@color/colorPrimaryLight"
                 android:paddingBottom="@dimen/margin_m"/>
 
             <LinearLayout
@@ -136,7 +144,7 @@
                     android:src="@drawable/editar"
                     android:background="@android:color/transparent"
                     android:contentDescription="@string/editarDescripcion"
-                    app:tint="#FFFFFF"
+                    app:tint="@color/colorPrimaryLight"
                     android:scaleType="centerInside"
                     android:layout_marginEnd="@dimen/margin_s"/>
 
@@ -147,7 +155,7 @@
                     android:src="@drawable/eliminar"
                     android:background="@android:color/transparent"
                     android:contentDescription="@string/eliminarDescripcion"
-                    app:tint="#FFFFFF"
+                    app:tint="@color/colorPrimaryLight"
                     android:scaleType="centerInside"/>
             </LinearLayout>
 
@@ -173,10 +181,10 @@
             android:layout_height="@dimen/button_height"
             android:text="@string/atrasBtnText"
             android:textAllCaps="false"
-            android:backgroundTint="#3d5a80"
-            android:textColor="#98c1d9"
-            app:rippleColor="#98c1d9"
-            app:strokeColor="#98c1d9"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@color/colorAccent"
+            app:rippleColor="@color/colorAccent"
+            app:strokeColor="@color/colorAccent"
             app:strokeWidth="@dimen/button_stroke"
             app:cornerRadius="@dimen/button_radius"
             android:layout_marginEnd="@dimen/margin_m"/>
@@ -187,10 +195,10 @@
             android:layout_height="@dimen/button_height"
             android:text="@string/verHistorialBtnText"
             android:textAllCaps="false"
-            android:backgroundTint="#3d5a80"
-            android:textColor="#98c1d9"
-            app:rippleColor="#98c1d9"
-            app:strokeColor="#98c1d9"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@color/colorAccent"
+            app:rippleColor="@color/colorAccent"
+            app:strokeColor="@color/colorAccent"
             app:strokeWidth="@dimen/button_stroke"
             app:cornerRadius="@dimen/button_radius"/>
     </LinearLayout>

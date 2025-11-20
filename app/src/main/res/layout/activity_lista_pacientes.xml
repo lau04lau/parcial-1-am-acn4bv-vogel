@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="#3d5a80">
+    android:background="@color/colorPrimary">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/listadoPacientesText"
-                android:textColor="#edf8f9"
+                android:textColor="@color/colorPrimaryLight"
                 android:textStyle="bold"
                 android:textSize="@dimen/text_title"
                 android:layout_centerHorizontal="true"/>
@@ -35,7 +35,7 @@
                 android:contentDescription="@string/agregarPacienteDescripcion"
                 android:src="@drawable/icono"
                 android:scaleType="centerInside"
-                app:tint="#FFFFFF"/>
+                app:tint="@color/white"/>
         </RelativeLayout>
 
         <TableLayout

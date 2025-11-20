@@ -10,7 +10,7 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#3d5a80"
+        android:background="@color/colorPrimary"
         tools:context=".cargarPaciente">
 
         <ImageView
@@ -22,7 +22,7 @@
             app:layout_constraintStart_toStartOf="@+id/formContainer"
             app:layout_constraintTop_toTopOf="@+id/formContainer"
             app:srcCompat="@drawable/icono"
-            app:tint="#FFFFFF" />
+            app:tint="@color/white" />
 
         <LinearLayout
             android:id="@+id/formContainer"
@@ -45,7 +45,7 @@
                 android:text="@string/agregar_paciente"
                 android:textAlignment="center"
                 android:textAllCaps="true"
-                android:textColor="#edf8f9"
+                android:textColor="@color/colorPrimaryLight"
                 android:textSize="@dimen/title_text"
                 android:textStyle="bold" />
 
@@ -53,9 +53,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_m"
-                android:textColorHint="#edf8f9"
-                app:boxStrokeColor="#edf8f9"
-                app:hintTextColor="#edf8f9">
+                android:textColorHint="@color/colorPrimaryLight"
+                app:boxStrokeColor="@color/colorPrimaryLight"
+                app:hintTextColor="@color/colorPrimaryLight">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/nombre"
@@ -63,17 +63,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/ingrese_el_nombre"
-                    android:textColor="#edf8f9"
-                    android:textColorHint="#edf8f9" />
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textColorHint="@color/colorPrimaryLight" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_m"
-                android:textColorHint="#edf8f9"
-                app:boxStrokeColor="#edf8f9"
-                app:hintTextColor="#edf8f9">
+                android:textColorHint="@color/colorPrimaryLight"
+                app:boxStrokeColor="@color/colorPrimaryLight"
+                app:hintTextColor="@color/colorPrimaryLight">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/apellido"
@@ -81,17 +81,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/ingrese_el_apellido"
-                    android:textColor="#edf8f9"
-                    android:textColorHint="#edf8f9" />
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textColorHint="@color/colorPrimaryLight" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_m"
-                android:textColorHint="#edf8f9"
-                app:boxStrokeColor="#edf8f9"
-                app:hintTextColor="#edf8f9">
+                android:textColorHint="@color/colorPrimaryLight"
+                app:boxStrokeColor="@color/colorPrimaryLight"
+                app:hintTextColor="@color/colorPrimaryLight">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/dni"
@@ -99,17 +99,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/ingrese_el_dni"
-                    android:textColor="#edf8f9"
-                    android:textColorHint="#edf8f9" />
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textColorHint="@color/colorPrimaryLight" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_m"
-                android:textColorHint="#edf8f9"
-                app:boxStrokeColor="#edf8f9"
-                app:hintTextColor="#edf8f9">
+                android:textColorHint="@color/colorPrimaryLight"
+                app:boxStrokeColor="@color/colorPrimaryLight"
+                app:hintTextColor="@color/colorPrimaryLight">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/telefono"
@@ -117,8 +117,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/ingrese_el_tel_fono"
-                    android:textColor="#edf8f9"
-                    android:textColorHint="#edf8f9" />
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textColorHint="@color/colorPrimaryLight" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -126,9 +126,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_m"
                 android:hint="@string/fecha_de_nacimiento"
-                android:textColorHint="#edf8f9"
-                app:boxStrokeColor="#edf8f9"
-                app:hintTextColor="#edf8f9">
+                android:textColorHint="@color/colorPrimaryLight"
+                app:boxStrokeColor="@color/colorPrimaryLight"
+                app:hintTextColor="@color/colorPrimaryLight">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/fechaNac"
@@ -139,8 +139,8 @@
                     android:focusable="false"
                     android:inputType="none"
                     android:padding="@dimen/padding_m"
-                    android:textColor="#edf8f9"
-                    android:textColorHint="#edf8f9" />
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textColorHint="@color/colorPrimaryLight" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -150,10 +150,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_m"
                 android:hint="@string/nivel_educativo"
-                android:textColorHint="#edf8f9"
-                app:boxStrokeColor="#edf8f9"
-                app:endIconTint="#edf8f9"
-                app:hintTextColor="#edf8f9">
+                android:textColorHint="@color/colorPrimaryLight"
+                app:boxStrokeColor="@color/colorPrimaryLight"
+                app:endIconTint="@color/colorPrimaryLight"
+                app:hintTextColor="@color/colorPrimaryLight">
 
                 <AutoCompleteTextView
                     android:id="@+id/nivelEdu"
@@ -162,8 +162,8 @@
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_m"
                     android:minHeight="@dimen/input_height"
-                    android:popupBackground="#3d5a80"
-                    android:textColor="#edf8f9" />
+                    android:popupBackground="@color/colorPrimary"
+                    android:textColor="@color/colorPrimaryLight" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -173,10 +173,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_l"
                 android:hint="@string/ingrese_el_curso_o_grado"
-                android:textColorHint="#edf8f9"
-                app:boxStrokeColor="#edf8f9"
-                app:endIconTint="#edf8f9"
-                app:hintTextColor="#edf8f9">
+                android:textColorHint="@color/colorPrimaryLight"
+                app:boxStrokeColor="@color/colorPrimaryLight"
+                app:endIconTint="@color/colorPrimaryLight"
+                app:hintTextColor="@color/colorPrimaryLight">
 
                 <AutoCompleteTextView
                     android:id="@+id/curso"
@@ -185,17 +185,17 @@
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_m"
                     android:minHeight="@dimen/input_height"
-                    android:popupBackground="#3d5a80"
-                    android:textColor="#edf8f9" />
+                    android:popupBackground="@color/colorPrimary"
+                    android:textColor="@color/colorPrimaryLight" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_l"
-                android:textColorHint="#edf8f9"
-                app:boxStrokeColor="#edf8f9"
-                app:hintTextColor="#edf8f9">
+                android:textColorHint="@color/colorPrimaryLight"
+                app:boxStrokeColor="@color/colorPrimaryLight"
+                app:hintTextColor="@color/colorPrimaryLight">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/motivoconsulta"
@@ -203,18 +203,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/ingrese_el_motivo_de_consulta"
-                    android:textColor="#edf8f9"
-                    android:textColorHint="#edf8f9" />
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textColorHint="@color/colorPrimaryLight" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/btnAgregar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#3d5a80"
+                android:backgroundTint="@color/colorPrimary"
                 android:minHeight="@dimen/button_height"
                 android:text="@string/agregar"
-                android:textColor="#98c1d9"
+                android:textColor="@color/colorAccent"
                 android:layout_marginTop="@dimen/margin_xl" />
 
         </LinearLayout>

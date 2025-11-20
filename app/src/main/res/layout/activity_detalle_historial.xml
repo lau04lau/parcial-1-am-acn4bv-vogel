@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f8eef6"
+    android:background="@color/backgroundGeneral"
     tools:context=".DetalleHistorialActivity">
 
     <ScrollView
@@ -26,7 +26,7 @@
                 android:id="@+id/dhPaciente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#3d5a80"
+                android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/text_subtitle"
                 android:textStyle="bold"
                 android:layout_marginBottom="@dimen/margin_m" />
@@ -35,7 +35,7 @@
                 android:id="@+id/dhFecha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#3d5a80"
+                android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/text_normal"
                 android:layout_marginBottom="@dimen/margin_m" />
 
@@ -43,7 +43,7 @@
                 android:id="@+id/dhTipo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#3d5a80"
+                android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/text_normal"
                 android:layout_marginBottom="@dimen/margin_m" />
 
@@ -51,7 +51,7 @@
                 android:id="@+id/dhDescripcion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#3d5a80"
+                android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/text_normal"
                 android:layout_marginBottom="@dimen/margin_m" />
 
@@ -76,7 +76,7 @@
             android:background="@android:color/transparent"
             android:src="@drawable/editardoc"
             android:contentDescription="@string/editarDescripcion"
-            app:tint="#3d5a80"
+            app:tint="@color/colorPrimary"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
             android:padding="@dimen/padding_xs"
@@ -89,7 +89,7 @@
             android:background="@android:color/transparent"
             android:src="@drawable/eliminardoc"
             android:contentDescription="@string/eliminarDescripcion"
-            app:tint="#3d5a80"
+            app:tint="@color/colorPrimary"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
             android:padding="@dimen/padding_xs"
@@ -102,7 +102,7 @@
             android:background="@android:color/transparent"
             android:src="@drawable/atras"
             android:contentDescription="@string/volverDescripcion"
-            app:tint="#3d5a80"
+            app:tint="@color/colorPrimary"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
             android:padding="@dimen/padding_xs"

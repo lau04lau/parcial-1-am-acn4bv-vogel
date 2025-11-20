@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f8eef6"
+    android:background="@color/backgroundGeneral"
     android:padding="@dimen/section_spacing"
     tools:context=".CargarHistorialActivity">
 
@@ -17,9 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/pacienteHint"
-            android:backgroundTint="#3d5a80"
-            android:textColor="#3d5a80"
-            android:textColorHint="#3d5a80" />
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary" />
 
         <AutoCompleteTextView
             android:id="@+id/h_tipo"
@@ -27,9 +27,9 @@
             android:layout_height="wrap_content"
             android:hint="@string/tipoRegistroHint"
             android:layout_marginTop="@dimen/margin_l"
-            android:backgroundTint="#3d5a80"
-            android:textColor="#3d5a80"
-            android:textColorHint="#3d5a80" />
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary" />
 
         <EditText
             android:id="@+id/h_fecha"
@@ -38,9 +38,9 @@
             android:hint="@string/fechaHint"
             android:focusable="false"
             android:layout_marginTop="@dimen/margin_l"
-            android:backgroundTint="#3d5a80"
-            android:textColor="#3d5a80"
-            android:textColorHint="#3d5a80" />
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary" />
 
         <EditText
             android:id="@+id/h_descripcion"
@@ -49,17 +49,17 @@
             android:gravity="top"
             android:layout_marginTop="@dimen/margin_l"
             android:hint="@string/descripcionHint"
-            android:backgroundTint="#3d5a80"
-            android:textColor="#3d5a80"
-            android:textColorHint="#3d5a80" />
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary" />
 
         <Button
             android:id="@+id/btnGuardarHistorial"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/guardarBtnText"
-            android:textColor="#edf8f9"
-            android:backgroundTint="#3d5a80"
+            android:textColor="@color/colorPrimaryLight"
+            android:backgroundTint="@color/colorPrimary"
             android:layout_marginTop="@dimen/margin_xl" />
     </LinearLayout>
 
