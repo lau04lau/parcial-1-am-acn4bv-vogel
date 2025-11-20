@@ -38,7 +38,7 @@
         android:id="@+id/btnPacientes"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:text="Pacientes"
+        android:text="@string/pacienteHint"
         android:textAllCaps="false"
         android:backgroundTint="#3d5a80"
         android:textColor="#98c1d9"

@@ -16,7 +16,7 @@
         app:tint="#3d5a80"
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
-        android:contentDescription="Agregar historial"
+        android:contentDescription="@string/agregarHistorialDescripcion"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"

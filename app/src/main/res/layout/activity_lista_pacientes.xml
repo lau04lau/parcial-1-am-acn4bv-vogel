@@ -20,7 +20,7 @@
                 android:id="@+id/tvListadoTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Listado de Pacientes"
+                android:text="@string/listadoPacientesText"
                 android:textColor="#edf8f9"
                 android:textStyle="bold"
                 android:textSize="20sp"
@@ -32,7 +32,7 @@
                 android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
                 android:background="@android:color/transparent"
-                android:contentDescription="Agregar paciente"
+                android:contentDescription="@string/agregarPacienteDescripcion"
                 android:src="@drawable/icono"
                 android:scaleType="centerInside"
                 app:tint="#FFFFFF"/>

@@ -15,4 +15,26 @@
     <string name="logo_tipo_del_proyecto">logo tipo Del Proyecto</string>
     <string name="historial_psicopedag_gico">Historial Psicopedagógico</string>
     <string name="eliminar">Eliminar</string>
+    <string name="pacienteHint">Paciente</string>
+    <string name="tipoRegistroHint">Tipo de registro</string>
+    <string name="fechaHint">Fecha</string>
+    <string name="descripcionHint">Descripción</string>
+    <string name="guardarBtnText">Guardar</string>
+    <string name="editarDescripcion">Editar</string>
+    <string name="eliminarDescripcion">Eliminar</string>
+    <string name="volverDescripcion">Volver</string>
+    <string name="detallePacienteText">Detalle del Paciente</string>
+    <string name="nombreText">Nombre</string>
+    <string name="apellidoText">Apellido</string>
+    <string name="dniText">DNI</string>
+    <string name="telefonoText">Teléfono</string>
+    <string name="nivelEducativoText">Nivel educativo</string>
+    <string name="cursoGradoText">Curso/Grado</string>
+    <string name="fechaNacimientoText">Fecha de nacimiento</string>
+    <string name="motivoConsulta">Motivo de consulta</string>
+    <string name="atrasBtnText">Atrás</string>
+    <string name="verHistorialBtnText">Ver historial</string>
+    <string name="agregarHistorialDescripcion">Agregar historial</string>
+    <string name="listadoPacientesText">Listado de Pacientes</string>
+    <string name="agregarPacienteDescripcion">Agregar paciente</string>
 </resources>

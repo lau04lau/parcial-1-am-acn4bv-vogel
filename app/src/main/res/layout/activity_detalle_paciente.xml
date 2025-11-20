@@ -20,7 +20,7 @@
                 android:id="@+id/tvTitulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Detalle del Paciente"
+                android:text="@string/detallePacienteText"
                 android:textColor="#edf8f9"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -30,7 +30,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nombre"
+                android:text="@string/nombreText"
                 android:textColor="#edf8f9"/>
             <TextView
                 android:id="@+id/tvNombre"
@@ -42,7 +42,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Apellido"
+                android:text="@string/apellidoText"
                 android:textColor="#edf8f9"/>
             <TextView
                 android:id="@+id/tvApellido"
@@ -54,7 +54,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="DNI"
+                android:text="@string/dniText"
                 android:textColor="#edf8f9"/>
             <TextView
                 android:id="@+id/tvDni"
@@ -66,7 +66,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Teléfono"
+                android:text="@string/telefonoText"
                 android:textColor="#edf8f9"/>
             <TextView
                 android:id="@+id/tvTelefono"
@@ -78,7 +78,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nivel educativo"
+                android:text="@string/nivelEducativoText"
                 android:textColor="#edf8f9"/>
             <TextView
                 android:id="@+id/tvNivel"
@@ -90,7 +90,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Curso/Grado"
+                android:text="@string/cursoGradoText"
                 android:textColor="#edf8f9"/>
             <TextView
                 android:id="@+id/tvCurso"
@@ -102,7 +102,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Fecha de nacimiento"
+                android:text="@string/fechaNacimientoText"
                 android:textColor="#edf8f9"/>
             <TextView
                 android:id="@+id/tvFecha"
@@ -114,7 +114,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Motivo de consulta"
+                android:text="@string/motivoConsulta"
                 android:textColor="#edf8f9"/>
             <TextView
                 android:id="@+id/tvMotivo"
@@ -135,7 +135,7 @@
                     android:layout_height="50dp"
                     android:src="@drawable/editar"
                     android:background="@android:color/transparent"
-                    android:contentDescription="Editar"
+                    android:contentDescription="@string/editarDescripcion"
                     app:tint="#FFFFFF"
                     android:scaleType="centerInside"
                     android:layout_marginEnd="8dp"/>
@@ -146,7 +146,7 @@
                     android:layout_height="50dp"
                     android:src="@drawable/eliminar"
                     android:background="@android:color/transparent"
-                    android:contentDescription="Eliminar"
+                    android:contentDescription="@string/eliminarDescripcion"
                     app:tint="#FFFFFF"
                     android:scaleType="centerInside"/>
             </LinearLayout>
@@ -172,7 +172,7 @@
             android:id="@+id/fabAtras"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:text="Atrás"
+            android:text="@string/atrasBtnText"
             android:textAllCaps="false"
             android:backgroundTint="#3d5a80"
             android:textColor="#98c1d9"
@@ -186,7 +186,7 @@
             android:id="@+id/fabHistorial"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:text="Ver historial"
+            android:text="@string/verHistorialBtnText"
             android:textAllCaps="false"
             android:backgroundTint="#3d5a80"
             android:textColor="#98c1d9"
