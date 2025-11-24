@@ -41,7 +41,7 @@ import java.util.Objects;
 
         public void setNombre(String nombre) {
             if (nombre == null || nombre.trim().isEmpty()) {
-                throw new IllegalArgumentException("El nombre no puede estar vacÃƒÂ­o");
+                throw new IllegalArgumentException("El nombre no puede estar vacio");
             }
             this.nombre = nombre.trim();
         }
@@ -50,7 +50,7 @@ import java.util.Objects;
 
         public void setApellido(String apellido) {
             if (apellido == null || apellido.trim().isEmpty()) {
-                throw new IllegalArgumentException("El apellido no puede estar vacÃƒÂ­o");
+                throw new IllegalArgumentException("El apellido no puede estar vacio");
             }
             this.apellido = apellido.trim();
         }

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -63,15 +64,15 @@ public class DetallePacienteActivity extends AppCompatActivity {
             tvMotivo.setText(paciente.getMotivoConsulta() != null ? paciente.getMotivoConsulta() : "");
         }
 
-        View btnAtras = findViewById(R.id.fabAtras);
-        View btnHist = findViewById(R.id.fabHistorial);
-        View btnEditar = findViewById(R.id.btnEditar);
-        View btnEliminar = findViewById(R.id.btnEliminar);
+        ImageButton btnAtras = findViewById(R.id.btnAtras);
+        ImageButton btnEliminar = findViewById(R.id.btnEliminar);
+        ImageButton btnEditar = findViewById(R.id.btnEditar);
+        ImageButton btnHistorial = findViewById(R.id.btnHistorial);
 
         btnAtras.setOnClickListener(v -> volverALista());
-        btnHist.setOnClickListener(this::onVerHistorial);
-        btnEditar.setOnClickListener(this::onEditar);
         btnEliminar.setOnClickListener(this::onEliminar);
+        btnEditar.setOnClickListener(this::onEditar);
+        btnHistorial.setOnClickListener(this::onVerHistorial);
     }
 
     private void volverALista() {
@@ -112,7 +113,7 @@ public class DetallePacienteActivity extends AppCompatActivity {
     }
 
     public void onEliminar(View v) {
-        if (indice < 0 || indice >= pacientes.size()) {
+        if (paciente == null || pacientes == null) {
             volverALista();
             return;
         }
@@ -121,7 +122,18 @@ public class DetallePacienteActivity extends AppCompatActivity {
                 .setTitle("Eliminar paciente")
                 .setMessage("¿Deseás eliminar a este paciente?")
                 .setPositiveButton("Eliminar", (dialog, which) -> {
-                    pacientes.remove(indice);
+                    String dniPaciente = paciente.getDni();
+                    if (dniPaciente != null) {
+                        for (int i = 0; i < pacientes.size(); i++) {
+                            Paciente p = pacientes.get(i);
+                            if (p != null && dniPaciente.equals(p.getDni())) {
+                                pacientes.remove(i);
+                                break;
+                            }
+                        }
+                    } else if (indice >= 0 && indice < pacientes.size()) {
+                        pacientes.remove(indice);
+                    }
                     volverALista();
                 })
                 .setNegativeButton("Cancelar", null)

@@ -4,252 +4,235 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.text.ParseException;
+import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 public class cargarPaciente extends AppCompatActivity {
 
-    private AutoCompleteTextView nivelEdu;
-    private AutoCompleteTextView gradoCurso;
-    private EditText fechaNac;
-    private EditText nombre;
-    private EditText apellido;
-    private EditText dni;
-    private EditText telefono;
-    private EditText motivoConsulta;
-
+    private EditText nombre, apellido, dni, telefono, motivoconsulta, fechaNac;
+    private AutoCompleteTextView nivelEdu, curso;
     private ArrayList<Paciente> pacientes;
-
+    private final Calendar calendario = Calendar.getInstance();
+    private final String[] niveles = new String[]{"Inicial", "Primario", "Secundario", "Terciario"};
+    private final String[] cursos = new String[]{"1°", "2°", "3°", "4°", "5°", "6°", "7°"};
+    private int indiceEdicion = -1;
     private Paciente pacienteEditar;
-    private int indiceEditar = -1;
-    private boolean modoEdicion = false;
-
-    private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+    private Button btnAgregar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cargar_paciente);
 
+        pacientes = (ArrayList<Paciente>) getIntent().getSerializableExtra("pacientes");
+        if (pacientes == null) pacientes = new ArrayList<>();
+
+        pacienteEditar = (Paciente) getIntent().getSerializableExtra("paciente");
+        indiceEdicion = getIntent().getIntExtra("indice", -1);
+
         nombre = findViewById(R.id.nombre);
         apellido = findViewById(R.id.apellido);
         dni = findViewById(R.id.dni);
         telefono = findViewById(R.id.telefono);
         fechaNac = findViewById(R.id.fechaNac);
-        motivoConsulta = findViewById(R.id.motivoconsulta);
+        motivoconsulta = findViewById(R.id.motivoconsulta);
         nivelEdu = findViewById(R.id.nivelEdu);
-        gradoCurso = findViewById(R.id.curso);
-        Button btnAgregar = findViewById(R.id.btnAgregar);
+        curso = findViewById(R.id.curso);
+        btnAgregar = findViewById(R.id.btnAgregar);
 
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null && bundle.get("pacientes") instanceof ArrayList) {
-            pacientes = (ArrayList<Paciente>) bundle.get("pacientes");
-        } else {
-            pacientes = new ArrayList<>();
-        }
+        ImageButton btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> volverALista());
 
-        if (bundle != null) {
-            pacienteEditar = (Paciente) bundle.getSerializable("paciente");
-            indiceEditar = bundle.getInt("indice", -1);
-            modoEdicion = pacienteEditar != null && indiceEditar >= 0 && indiceEditar < pacientes.size();
-        }
+        ArrayAdapter<String> adapterNivel = new ArrayAdapter<>(this, R.layout.spinner_item, niveles);
+        adapterNivel.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        nivelEdu.setAdapter(adapterNivel);
 
-        String[] niveles = new String[]{"Inicial", "Primaria", "Secundaria", "Terciario"};
-        ArrayAdapter<String> adaptNivel = new ArrayAdapter<>(this, R.layout.spinner_dropdown_item, niveles);
-        nivelEdu.setAdapter(adaptNivel);
-        nivelEdu.setOnClickListener(v -> nivelEdu.showDropDown());
-
-        String[] cursos = new String[]{"1", "2", "3", "4", "5", "6", "7"};
-        ArrayAdapter<String> adaptCurso = new ArrayAdapter<>(this, R.layout.spinner_dropdown_item, cursos);
-        gradoCurso.setAdapter(adaptCurso);
-        gradoCurso.setOnClickListener(v -> gradoCurso.showDropDown());
+        ArrayAdapter<String> adapterCurso = new ArrayAdapter<>(this, R.layout.spinner_item, cursos);
+        adapterCurso.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        curso.setAdapter(adapterCurso);
 
         fechaNac.setOnClickListener(v -> mostrarDatePicker());
 
-        if (modoEdicion && pacienteEditar != null) {
-            nombre.setText(pacienteEditar.getNombre());
-            apellido.setText(pacienteEditar.getApellido());
-            dni.setText(pacienteEditar.getDni());
-            telefono.setText(pacienteEditar.getTelefono());
-            motivoConsulta.setText(pacienteEditar.getMotivoConsulta());
-            if (pacienteEditar.getNivelEducativo() != null) {
-                nivelEdu.setText(pacienteEditar.getNivelEducativo(), false);
-            }
-            if (pacienteEditar.getGradoCurso() != 0) {
-                gradoCurso.setText(String.valueOf(pacienteEditar.getGradoCurso()), false);
-            }
-            if (pacienteEditar.getFechaNac() != null) {
-                fechaNac.setText(sdf.format(pacienteEditar.getFechaNac()));
-            }
-            btnAgregar.setText("Guardar cambios");
+        TextView titulo = findViewById(R.id.textView2);
+
+        if (pacienteEditar != null) {
+            cargarDatosPaciente();
+            titulo.setText("EDITAR PACIENTE");
+            btnAgregar.setText("EDITAR");
+        } else {
+            titulo.setText("AGREGAR PACIENTE");
+            btnAgregar.setText("AGREGAR");
         }
 
-        btnAgregar.setOnClickListener(v -> agregarPaciente());
+        btnAgregar.setOnClickListener(v -> guardarPaciente());
     }
 
     private void mostrarDatePicker() {
-        Calendar c = Calendar.getInstance();
-        int y = c.get(Calendar.YEAR);
-        int m = c.get(Calendar.MONTH);
-        int d = c.get(Calendar.DAY_OF_MONTH);
+        int dark = getResources().getColor(R.color.colorPrimary);
+        int light = getResources().getColor(R.color.colorPrimaryLight);
 
-        DatePickerDialog dp = new DatePickerDialog(
+        DatePickerDialog dialog = new DatePickerDialog(
                 this,
-                R.style.Theme_PsicopedagogiaAndroid_DatePicker,
-                (view, year, month, dayOfMonth) -> {
-                    String txt = String.format(
-                            Locale.getDefault(),
-                            "%02d/%02d/%04d",
-                            dayOfMonth,
-                            month + 1,
-                            year
-                    );
-                    fechaNac.setText(txt);
+                android.R.style.Theme_Holo_Light_Dialog_NoActionBar_MinWidth,
+                (DatePicker view, int year, int month, int day) -> {
+                    calendario.set(Calendar.YEAR, year);
+                    calendario.set(Calendar.MONTH, month);
+                    calendario.set(Calendar.DAY_OF_MONTH, day);
+                    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                    fechaNac.setText(formato.format(calendario.getTime()));
                 },
-                y, m, d
+                calendario.get(Calendar.YEAR),
+                calendario.get(Calendar.MONTH),
+                calendario.get(Calendar.DAY_OF_MONTH)
         );
 
-        dp.getDatePicker().setMaxDate(System.currentTimeMillis());
-        dp.show();
+        dialog.setOnShowListener(d -> {
+            dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
-        int azul = android.graphics.Color.parseColor("#3d5a80");
-        dp.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(azul);
-        dp.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(azul);
-        dp.getButton(DatePickerDialog.BUTTON_POSITIVE).setText("OK");
-        dp.getButton(DatePickerDialog.BUTTON_NEGATIVE).setText("Cancelar");
-        dp.getButton(DatePickerDialog.BUTTON_POSITIVE).setVisibility(View.VISIBLE);
-        dp.getButton(DatePickerDialog.BUTTON_NEGATIVE).setVisibility(View.VISIBLE);
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(dark);
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(dark);
+
+            int titleId = getResources().getIdentifier("alertTitle", "id", "android");
+            if (titleId != 0) {
+                TextView titleView = dialog.findViewById(titleId);
+                if (titleView != null) titleView.setTextColor(dark);
+            }
+
+            try {
+                Field datePickerField = dialog.getClass().getDeclaredField("mDatePicker");
+                datePickerField.setAccessible(true);
+                DatePicker datePicker = (DatePicker) datePickerField.get(dialog);
+
+                int dayId = getResources().getIdentifier("day", "id", "android");
+                int monthId = getResources().getIdentifier("month", "id", "android");
+                int yearId = getResources().getIdentifier("year", "id", "android");
+
+                EditText day = dialog.findViewById(dayId);
+                EditText month = dialog.findViewById(monthId);
+                EditText year = dialog.findViewById(yearId);
+
+                if (day != null) day.setTextColor(light);
+                if (month != null) month.setTextColor(light);
+                if (year != null) year.setTextColor(light);
+
+                int headerId = getResources().getIdentifier("date_picker_header", "id", "android");
+                if (headerId != 0) {
+                    try {
+                        dialog.findViewById(headerId).setBackgroundColor(dark);
+                    } catch (Exception ignored) {}
+                }
+            } catch (Exception ignored) {}
+        });
+
+        dialog.show();
     }
 
-    private void agregarPaciente() {
-        String vNombre = nombre.getText().toString().trim();
-        String vApellido = apellido.getText().toString().trim();
-        String vDni = dni.getText().toString().trim();
-        String vTelefono = telefono.getText().toString().trim();
-        String vFecha = fechaNac.getText().toString().trim();
-        String vNivel = nivelEdu.getText().toString().trim();
-        String vGrado = gradoCurso.getText().toString().trim();
-        String vMotivo = motivoConsulta.getText().toString().trim();
+    private void cargarDatosPaciente() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        nombre.setText(pacienteEditar.getNombre());
+        apellido.setText(pacienteEditar.getApellido());
+        dni.setText(pacienteEditar.getDni());
+        telefono.setText(pacienteEditar.getTelefono());
+        motivoconsulta.setText(pacienteEditar.getMotivoConsulta());
 
-        StringBuilder errores = new StringBuilder();
-
-        if (vNombre.isEmpty()) errores.append("• El nombre es obligatorio\n");
-        if (vApellido.isEmpty()) errores.append("• El apellido es obligatorio\n");
-        if (vDni.isEmpty()) errores.append("• El DNI es obligatorio\n");
-        if (vTelefono.isEmpty()) errores.append("• El telefono es obligatorio\n");
-        if (vFecha.isEmpty()) errores.append("• La fecha de nacimiento es obligatoria\n");
-        if (vNivel.isEmpty()) errores.append("• El nivel educativo es obligatorio\n");
-        if (vGrado.isEmpty()) errores.append("• El grado/curso es obligatorio\n");
-        if (vMotivo.isEmpty()) errores.append("• El motivo de consulta es obligatorio\n");
-
-        String vDniDigits = vDni.replaceAll("\\D", "");
-        if (!vDniDigits.isEmpty()) {
-            boolean dniExiste = false;
-            for (int i = 0; i < pacientes.size(); i++) {
-                if (modoEdicion && i == indiceEditar) continue;
-                Paciente px = pacientes.get(i);
-                if (px != null && px.getDni() != null) {
-                    String pd = px.getDni().replaceAll("\\D", "");
-                    if (!pd.isEmpty() && pd.equals(vDniDigits)) {
-                        dniExiste = true;
-                        break;
-                    }
-                }
-            }
-            if (dniExiste) errores.append("• El DNI ya está registrado\n");
+        if (pacienteEditar.getFechaNac() != null) {
+            fechaNac.setText(sdf.format(pacienteEditar.getFechaNac()));
         }
 
-        Date fecha = null;
-        if (!vFecha.isEmpty()) {
-            try {
-                fecha = sdf.parse(vFecha);
-            } catch (ParseException e) {
-                errores.append("• La fecha no tiene formato válido (dd/MM/aaaa)\n");
-            }
+        if (pacienteEditar.getNivelEducativo() != null) {
+            nivelEdu.setText(pacienteEditar.getNivelEducativo(), false);
         }
 
-        int grado = 0;
-        if (!vGrado.isEmpty()) {
-            try {
-                grado = Integer.parseInt(vGrado);
-            } catch (NumberFormatException e) {
-                errores.append("• El grado debe ser numérico\n");
-            }
+        int grado = pacienteEditar.getGradoCurso();
+        if (grado >= 1 && grado <= cursos.length) {
+            curso.setText(cursos[grado - 1], false);
         }
+    }
 
-        if (errores.length() > 0) {
-            new AlertDialog.Builder(this)
-                    .setTitle("Revisar datos")
-                    .setMessage(errores.toString())
-                    .setPositiveButton("Aceptar", null)
-                    .show();
-            return;
-        }
+    private void guardarPaciente() {
+        String n = nombre.getText().toString();
+        String a = apellido.getText().toString();
+        String d = dni.getText().toString();
+        String t = telefono.getText().toString();
+        String f = fechaNac.getText().toString();
+        String m = motivoconsulta.getText().toString();
+        String niv = nivelEdu.getText().toString();
+        String c = curso.getText().toString();
 
-        Paciente p;
-        if (modoEdicion && pacienteEditar != null) {
-            p = pacienteEditar;
-        } else {
-            p = new Paciente();
-        }
+        ArrayList<String> errores = new ArrayList<>();
 
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        java.util.Date fechaParseada = null;
         try {
-            p.setNombre(vNombre);
-            p.setApellido(vApellido);
-            p.setDni(vDniDigits.isEmpty() ? vDni : vDniDigits);
-            p.setTelefono(vTelefono);
-            p.setFechaNac(fecha);
-            p.setMotivoConsulta(vMotivo);
-            p.setGradoCurso(grado);
-            p.setNivelEducativo(vNivel);
-        } catch (IllegalArgumentException ex) {
-            new AlertDialog.Builder(this)
-                    .setTitle("Error")
-                    .setMessage(ex.getMessage())
-                    .setPositiveButton("Aceptar", null)
-                    .show();
+            fechaParseada = sdf.parse(f);
+        } catch (Exception ignored) {}
+
+        Paciente p = new Paciente();
+
+        try { p.setNombre(n); } catch (Exception e) { errores.add(e.getMessage()); }
+        try { p.setApellido(a); } catch (Exception e) { errores.add(e.getMessage()); }
+        try { p.setDni(d); } catch (Exception e) { errores.add(e.getMessage()); }
+        try { p.setTelefono(t); } catch (Exception e) { errores.add(e.getMessage()); }
+
+        if (fechaParseada == null) errores.add("La fecha de nacimiento no es válida");
+        else {
+            try { p.setFechaNac(fechaParseada); } catch (Exception e) { errores.add(e.getMessage()); }
+        }
+
+        int gradoValor = 0;
+        if (!c.trim().isEmpty()) {
+            try { gradoValor = Integer.parseInt(c.replaceAll("[^0-9]", "")); }
+            catch (Exception ignored) { errores.add("El grado/curso no es válido"); }
+        } else errores.add("Debe seleccionar un grado/curso");
+
+        if (gradoValor > 0) {
+            try { p.setGradoCurso(gradoValor); } catch (Exception e) { errores.add(e.getMessage()); }
+        }
+
+        try { p.setNivelEducativo(niv); } catch (Exception e) { errores.add(e.getMessage()); }
+        try { p.setMotivoConsulta(m); } catch (Exception e) { errores.add(e.getMessage()); }
+
+        if (!errores.isEmpty()) {
+            mostrarAlertaErrores(errores);
             return;
         }
 
+        if (indiceEdicion >= 0 && indiceEdicion < pacientes.size()) {
+            pacientes.set(indiceEdicion, p);
+        } else {
+            pacientes.add(p);
+        }
+
+        volverALista();
+    }
+
+    private void volverALista() {
+        Intent i = new Intent(this, ListaPacientesActivity.class);
+        i.putExtra("pacientes", pacientes);
+        startActivity(i);
+        finish();
+    }
+
+    private void mostrarAlertaErrores(ArrayList<String> errores) {
+        StringBuilder mensaje = new StringBuilder();
+        for (String e : errores) mensaje.append("• ").append(e).append("\n");
         new AlertDialog.Builder(this)
-                .setTitle(modoEdicion ? "Confirmar cambios" : "Confirmar paciente")
-                .setMessage(
-                        "Nombre: " + vNombre + "\n" +
-                                "Apellido: " + vApellido + "\n" +
-                                "DNI: " + vDni + "\n" +
-                                "Teléfono: " + vTelefono + "\n" +
-                                "Fecha: " + vFecha + "\n" +
-                                "Nivel educativo: " + vNivel + "\n" +
-                                "Grado: " + vGrado + "\n" +
-                                "Motivo: " + vMotivo
-                )
-                .setPositiveButton("Guardar", (dialog, which) -> {
-                    if (modoEdicion && indiceEditar >= 0 && indiceEditar < pacientes.size()) {
-                        pacientes.set(indiceEditar, p);
-                        Toast.makeText(this, "Paciente actualizado", Toast.LENGTH_SHORT).show();
-                    } else {
-                        pacientes.add(p);
-                        Toast.makeText(this, "Paciente guardado", Toast.LENGTH_SHORT).show();
-                    }
-                    Intent i = new Intent(this, ListaPacientesActivity.class);
-                    i.putExtra("pacientes", pacientes);
-                    startActivity(i);
-                    finish();
-                })
-                .setNegativeButton("Cancelar", null)
+                .setTitle("Errores en el formulario")
+                .setMessage(mensaje.toString())
+                .setPositiveButton("Aceptar", null)
                 .show();
     }
 }
