@@ -32,44 +32,37 @@ public class ListaHistorialActivity extends AppCompatActivity {
         pacientes = (ArrayList<Paciente>) intent.getSerializableExtra("pacientes");
         pacienteSeleccionado = (Paciente) intent.getSerializableExtra("pacienteSeleccionado");
 
-        if (historial == null) {
-            historial = new ArrayList<>();
-        }
-        if (pacientes == null) {
-            pacientes = new ArrayList<>();
-        }
+        if (historial == null) historial = new ArrayList<>();
+        if (pacientes == null) pacientes = new ArrayList<>();
 
         ImageButton btnAdd = findViewById(R.id.btnAddHistorial);
         btnAdd.setOnClickListener(v -> {
             Intent i = new Intent(this, CargarHistorialActivity.class);
             i.putExtra("historial", historial);
             i.putExtra("pacientes", pacientes);
-            if (pacienteSeleccionado != null) {
-                i.putExtra("pacienteSeleccionado", pacienteSeleccionado);
-            }
+            i.putExtra("pacienteSeleccionado", pacienteSeleccionado);
             startActivity(i);
         });
+
+        ImageButton btnAtras = findViewById(R.id.btnAtrasHistorial);
+        btnAtras.setOnClickListener(v -> volverADetalle());
 
         renderTabla();
     }
 
     private boolean coincidePaciente(Historial h) {
-        if (pacienteSeleccionado == null) {
-            return true;
-        }
-        if (h.getPaciente() == null) {
-            return false;
-        }
+        if (pacienteSeleccionado == null) return true;
+        if (h.getPaciente() == null) return false;
+
         String dniSel = pacienteSeleccionado.getDni() != null ? pacienteSeleccionado.getDni() : "";
         String dniHist = h.getPaciente().getDni() != null ? h.getPaciente().getDni() : "";
-        return !dniSel.isEmpty() && dniSel.equals(dniHist);
+        return dniSel.equals(dniHist);
     }
 
     private void renderTabla() {
         TableLayout table = findViewById(R.id.tableHistorial);
         table.removeAllViews();
         table.setStretchAllColumns(true);
-        table.setShrinkAllColumns(false);
 
         int colorTexto = Color.parseColor("#edf8f9");
         int colorFondo = Color.parseColor("#3d5a80");
@@ -100,17 +93,11 @@ public class ListaHistorialActivity extends AppCompatActivity {
 
         for (int i = 0; i < historial.size(); i++) {
             Historial h = historial.get(i);
-
-            if (!coincidePaciente(h)) {
-                continue;
-            }
+            if (!coincidePaciente(h)) continue;
 
             TableRow row = new TableRow(this);
             row.setBackgroundColor(colorFondo);
             row.setPadding(1, 1, 1, 1);
-            row.setLayoutParams(new TableLayout.LayoutParams(
-                    TableLayout.LayoutParams.MATCH_PARENT,
-                    TableLayout.LayoutParams.WRAP_CONTENT));
 
             String pacienteTxt = "";
             if (h.getPaciente() != null) {
@@ -118,14 +105,15 @@ public class ListaHistorialActivity extends AppCompatActivity {
                 String ape = h.getPaciente().getApellido() != null ? h.getPaciente().getApellido() : "";
                 pacienteTxt = (nom + " " + ape).trim();
             }
+
             String fechaTxt = h.getFecha() != null ? sdf.format(h.getFecha()) : "";
             String tipoTxt = h.getTipoRegistro() != null ? h.getTipoRegistro() : "";
 
-            String[] cols = {pacienteTxt, fechaTxt, tipoTxt};
+            String[] columnas = {pacienteTxt, fechaTxt, tipoTxt};
 
-            for (int c = 0; c < cols.length; c++) {
+            for (int c = 0; c < columnas.length; c++) {
                 TextView tv = new TextView(this);
-                tv.setText(cols[c]);
+                tv.setText(columnas[c]);
                 tv.setTextColor(colorTexto);
                 tv.setPadding(8, 8, 8, 8);
                 tv.setGravity(Gravity.CENTER);
@@ -134,7 +122,7 @@ public class ListaHistorialActivity extends AppCompatActivity {
                 row.addView(tv);
 
                 if (c == 0) {
-                    final int index = i;
+                    int index = i;
                     tv.setOnClickListener(v -> {
                         Intent d = new Intent(this, DetalleHistorialActivity.class);
                         d.putExtra("historial", historial);
@@ -155,5 +143,28 @@ public class ListaHistorialActivity extends AppCompatActivity {
             table.addView(row);
             table.addView(divider);
         }
+    }
+
+    private void volverADetalle() {
+        Intent i = new Intent(this, DetallePacienteActivity.class);
+        i.putExtra("paciente", pacienteSeleccionado);
+        i.putExtra("pacientes", pacientes);
+        i.putExtra("historial", historial);
+
+        int indice = -1;
+        if (pacientes != null && !pacientes.isEmpty() && pacienteSeleccionado != null && pacienteSeleccionado.getDni() != null) {
+            String dniSel = pacienteSeleccionado.getDni();
+            for (int x = 0; x < pacientes.size(); x++) {
+                Paciente p = pacientes.get(x);
+                if (p != null && dniSel.equals(p.getDni())) {
+                    indice = x;
+                    break;
+                }
+            }
+        }
+
+        i.putExtra("indice", indice);
+        startActivity(i);
+        finish();
     }
 }
