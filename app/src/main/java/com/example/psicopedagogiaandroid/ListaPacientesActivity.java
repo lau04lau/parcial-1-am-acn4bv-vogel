@@ -34,7 +34,7 @@ public class ListaPacientesActivity extends AppCompatActivity {
 
         ImageButton btnAdd = findViewById(R.id.btnAddPatient);
         btnAdd.setOnClickListener(v -> {
-            Intent i = new Intent(this, cargarPaciente.class);
+            Intent i = new Intent(this, cargarPacienteActivity.class);
             i.putExtra("pacientes", pacientes);
             startActivity(i);
             finish();

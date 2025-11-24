@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class cargarPaciente extends AppCompatActivity {
+public class cargarPacienteActivity extends AppCompatActivity {
 
     private EditText nombre, apellido, dni, telefono, motivoconsulta, fechaNac;
     private AutoCompleteTextView nivelEdu, curso;

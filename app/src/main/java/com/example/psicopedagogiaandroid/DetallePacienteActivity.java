@@ -104,7 +104,7 @@ public class DetallePacienteActivity extends AppCompatActivity {
         if (paciente == null) {
             return;
         }
-        Intent i = new Intent(this, cargarPaciente.class);
+        Intent i = new Intent(this, cargarPacienteActivity.class);
         i.putExtra("pacientes", pacientes);
         i.putExtra("paciente", paciente);
         i.putExtra("indice", indice);

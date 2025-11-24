@@ -17,7 +17,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".cargarPaciente"
+            android:name=".cargarPacienteActivity"
             android:exported="false" />
 
         <activity
