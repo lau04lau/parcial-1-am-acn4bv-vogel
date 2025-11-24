@@ -1,66 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundGeneral"
-    android:padding="@dimen/section_spacing"
-    tools:context=".CargarHistorialActivity">
+    android:fillViewport="true">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@color/colorPrimary"
+        tools:context=".CargarHistorialActivity">
 
-        <AutoCompleteTextView
-            android:id="@+id/h_paciente"
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/btnBackHistorial"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/margin_l"
+            android:layout_marginTop="@dimen/margin_xxl"
+            android:background="@android:color/transparent"
+            android:padding="@dimen/padding_s"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/atras"
+            app:tint="@color/colorPrimaryLight" />
+
+        <LinearLayout
+            android:id="@+id/formContainer"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/pacienteHint"
-            android:backgroundTint="@color/colorPrimary"
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/colorPrimary" />
+            android:orientation="vertical"
+            android:padding="@dimen/section_spacing"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_max="600dp">
 
-        <AutoCompleteTextView
-            android:id="@+id/h_tipo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/tipoRegistroHint"
-            android:layout_marginTop="@dimen/margin_l"
-            android:backgroundTint="@color/colorPrimary"
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/colorPrimary" />
+            <TextView
+                android:id="@+id/tvTituloAgregarHistorial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_xl"
+                android:paddingVertical="@dimen/padding_l"
+                android:text="AGREGAR HISTORIAL"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimaryLight"
+                android:textSize="@dimen/title_text"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/h_fecha"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/fechaHint"
-            android:focusable="false"
-            android:layout_marginTop="@dimen/margin_l"
-            android:backgroundTint="@color/colorPrimary"
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/colorPrimary" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_m"
+                android:hint="Fecha"
+                android:textColorHint="@color/colorPrimaryLight"
+                app:boxStrokeColor="@color/colorPrimaryLight"
+                app:hintTextColor="@color/colorPrimaryLight">
 
-        <EditText
-            android:id="@+id/h_descripcion"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:gravity="top"
-            android:layout_marginTop="@dimen/margin_l"
-            android:hint="@string/descripcionHint"
-            android:backgroundTint="@color/colorPrimary"
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/colorPrimary" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fechaHistorial"
+                    style="@style/EditTextCursorColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:inputType="none"
+                    android:padding="@dimen/padding_m"
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textColorHint="@color/colorPrimaryLight" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/btnGuardarHistorial"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/guardarBtnText"
-            android:textColor="@color/colorPrimaryLight"
-            android:backgroundTint="@color/colorPrimary"
-            android:layout_marginTop="@dimen/margin_xl" />
-    </LinearLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tipoLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_m"
+                android:hint="Tipo de registro"
+                android:textColorHint="@color/colorPrimaryLight"
+                app:boxStrokeColor="@color/colorPrimaryLight"
+                app:endIconTint="@color/colorPrimaryLight"
+                app:hintTextColor="@color/colorPrimaryLight">
 
+                <AutoCompleteTextView
+                    android:id="@+id/tipoRegistro"
+                    style="@style/EditTextCursorColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_m"
+                    android:minHeight="@dimen/input_height"
+                    android:popupBackground="@color/colorPrimary"
+                    android:textColor="@color/colorPrimaryLight" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_l"
+                android:hint="Descripción"
+                android:textColorHint="@color/colorPrimaryLight"
+                app:boxStrokeColor="@color/colorPrimaryLight"
+                app:hintTextColor="@color/colorPrimaryLight">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/descripcionHistorial"
+                    style="@style/EditTextCursorColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|start"
+                    android:minLines="3"
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textColorHint="@color/colorPrimaryLight" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnGuardarHistorial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_xl"
+                android:backgroundTint="@color/colorPrimary"
+                android:minHeight="@dimen/button_height"
+                android:text="Agregar"
+                android:textColor="@color/colorAccent" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

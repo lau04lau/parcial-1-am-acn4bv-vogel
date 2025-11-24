@@ -4,11 +4,12 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,7 +21,6 @@ import java.util.Locale;
 
 public class CargarHistorialActivity extends AppCompatActivity {
 
-    private AutoCompleteTextView selectorPaciente;
     private AutoCompleteTextView selectorTipo;
     private EditText selectorFecha;
     private EditText descripcion;
@@ -39,11 +39,11 @@ public class CargarHistorialActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cargar_historial);
 
-        selectorPaciente = findViewById(R.id.h_paciente);
-        selectorTipo = findViewById(R.id.h_tipo);
-        selectorFecha = findViewById(R.id.h_fecha);
-        descripcion = findViewById(R.id.h_descripcion);
+        selectorFecha = findViewById(R.id.fechaHistorial);
+        selectorTipo = findViewById(R.id.tipoRegistro);
+        descripcion = findViewById(R.id.descripcionHistorial);
         Button btnGuardar = findViewById(R.id.btnGuardarHistorial);
+        ImageButton btnBackHistorial = findViewById(R.id.btnBackHistorial);
 
         historial = (ArrayList<Historial>) getIntent().getSerializableExtra("historial");
         pacientes = (ArrayList<Paciente>) getIntent().getSerializableExtra("pacientes");
@@ -64,49 +64,6 @@ public class CargarHistorialActivity extends AppCompatActivity {
 
         modoEdicion = historialItem != null && indice >= 0 && indice < historial.size();
 
-        if (pacienteSeleccionado != null) {
-            String nom = pacienteSeleccionado.getNombre() != null ? pacienteSeleccionado.getNombre() : "";
-            String ape = pacienteSeleccionado.getApellido() != null ? pacienteSeleccionado.getApellido() : "";
-            selectorPaciente.setText((nom + " " + ape).trim(), false);
-            selectorPaciente.setEnabled(false);
-            selectorPaciente.setFocusable(false);
-            selectorPaciente.setClickable(false);
-        } else {
-            if (pacientes.isEmpty()) {
-                new AlertDialog.Builder(this)
-                        .setTitle("Sin pacientes")
-                        .setMessage("No hay pacientes cargados.\n\nPara registrar un historial primero debés cargar un paciente.")
-                        .setPositiveButton("Cargar paciente", (d, w) -> {
-                            Intent i = new Intent(this, cargarPaciente.class);
-                            i.putExtra("pacientes", pacientes);
-                            startActivity(i);
-                            finish();
-                        })
-                        .setNegativeButton("Volver", (d, w) -> {
-                            finish();
-                        })
-                        .setOnCancelListener(d -> finish())
-                        .show();
-                return;
-            }
-
-            ArrayList<String> nombresPacientes = new ArrayList<>();
-            for (Paciente p : pacientes) {
-                String nom = p.getNombre() != null ? p.getNombre() : "";
-                String ape = p.getApellido() != null ? p.getApellido() : "";
-                nombresPacientes.add((nom + " " + ape).trim());
-            }
-
-            ArrayAdapter<String> adaptPacientes = new ArrayAdapter<>(this, R.layout.spinner_dropdown_item, nombresPacientes);
-            selectorPaciente.setAdapter(adaptPacientes);
-            selectorPaciente.setOnTouchListener((v, event) -> {
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    selectorPaciente.showDropDown();
-                }
-                return false;
-            });
-        }
-
         String[] tipos = {
                 "Sesión",
                 "Primera entrevista",
@@ -116,12 +73,7 @@ public class CargarHistorialActivity extends AppCompatActivity {
         };
         ArrayAdapter<String> adaptTipo = new ArrayAdapter<>(this, R.layout.spinner_dropdown_item, tipos);
         selectorTipo.setAdapter(adaptTipo);
-        selectorTipo.setOnTouchListener((v, event) -> {
-            if (event.getAction() == MotionEvent.ACTION_UP) {
-                selectorTipo.showDropDown();
-            }
-            return false;
-        });
+        selectorTipo.setOnClickListener(v -> selectorTipo.showDropDown());
 
         selectorFecha.setOnClickListener(v -> mostrarDatePicker());
 
@@ -135,9 +87,16 @@ public class CargarHistorialActivity extends AppCompatActivity {
             if (historialItem.getDescripcion() != null) {
                 descripcion.setText(historialItem.getDescripcion());
             }
+            Button btn = findViewById(R.id.btnGuardarHistorial);
+            btn.setText("Editar");
+            TextView titulo = findViewById(R.id.tvTituloAgregarHistorial);
+            if (titulo != null) {
+                titulo.setText("EDITAR HISTORIAL");
+            }
         }
 
         btnGuardar.setOnClickListener(v -> guardarHistorial());
+        btnBackHistorial.setOnClickListener(v -> volverAListaHistorial());
     }
 
     private void mostrarDatePicker() {
@@ -173,15 +132,14 @@ public class CargarHistorialActivity extends AppCompatActivity {
     }
 
     private void guardarHistorial() {
-        String pTexto = selectorPaciente.getText().toString().trim();
         String tTexto = selectorTipo.getText().toString().trim();
         String fTexto = selectorFecha.getText().toString().trim();
         String desc = descripcion.getText().toString().trim();
 
         StringBuilder errores = new StringBuilder();
 
-        if (pTexto.isEmpty()) {
-            errores.append("• Debés seleccionar un paciente\n");
+        if (pacienteSeleccionado == null) {
+            errores.append("• No se encontró un paciente válido para asociar el historial\n");
         }
         if (tTexto.isEmpty()) {
             errores.append("• Debés seleccionar un tipo de registro\n");
@@ -191,28 +149,6 @@ public class CargarHistorialActivity extends AppCompatActivity {
         }
         if (desc.isEmpty()) {
             errores.append("• La descripción es obligatoria\n");
-        }
-
-        Paciente seleccionado;
-
-        if (pacienteSeleccionado != null) {
-            seleccionado = pacienteSeleccionado;
-        } else {
-            seleccionado = null;
-            if (!pTexto.isEmpty()) {
-                for (Paciente p : pacientes) {
-                    String nom = p.getNombre() != null ? p.getNombre() : "";
-                    String ape = p.getApellido() != null ? p.getApellido() : "";
-                    String full = (nom + " " + ape).trim();
-                    if (full.equals(pTexto)) {
-                        seleccionado = p;
-                        break;
-                    }
-                }
-                if (seleccionado == null) {
-                    errores.append("• El paciente seleccionado no es válido\n");
-                }
-            }
         }
 
         Date fecha = null;
@@ -234,29 +170,31 @@ public class CargarHistorialActivity extends AppCompatActivity {
         }
 
         if (modoEdicion && historialItem != null && indice >= 0 && indice < historial.size()) {
-            historialItem.setPaciente(seleccionado);
+            historialItem.setPaciente(pacienteSeleccionado);
             historialItem.setFecha(fecha);
             historialItem.setTipoRegistro(tTexto);
             historialItem.setDescripcion(desc);
             historial.set(indice, historialItem);
         } else {
-            Historial h = new Historial(seleccionado, fecha, tTexto, desc);
+            Historial h = new Historial(pacienteSeleccionado, fecha, tTexto, desc);
             historial.add(h);
         }
 
         new AlertDialog.Builder(this)
                 .setTitle("Guardado")
                 .setMessage("El registro fue guardado exitosamente.")
-                .setPositiveButton("OK", (d, w) -> {
-                    Intent i = new Intent(this, ListaHistorialActivity.class);
-                    i.putExtra("historial", historial);
-                    i.putExtra("pacientes", pacientes);
-                    if (pacienteSeleccionado != null) {
-                        i.putExtra("pacienteSeleccionado", pacienteSeleccionado);
-                    }
-                    startActivity(i);
-                    finish();
-                })
+                .setPositiveButton("OK", (d, w) -> volverAListaHistorial())
                 .show();
+    }
+
+    private void volverAListaHistorial() {
+        Intent i = new Intent(this, ListaHistorialActivity.class);
+        i.putExtra("historial", historial);
+        i.putExtra("pacientes", pacientes);
+        if (pacienteSeleccionado != null) {
+            i.putExtra("pacienteSeleccionado", pacienteSeleccionado);
+        }
+        startActivity(i);
+        finish();
     }
 }
