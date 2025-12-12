@@ -26,6 +26,7 @@
     <string name="detallePacienteText">Detalle del Paciente</string>
     <string name="nombreText">Nombre</string>
     <string name="apellidoText">Apellido</string>
+    <string name="o_completa_mail_contrasenia">o completá mail y contraseña</string>
     <string name="dniText">DNI</string>
     <string name="telefonoText">Teléfono</string>
     <string name="nivelEducativoText">Nivel educativo</string>
@@ -37,4 +38,10 @@
     <string name="agregarHistorialDescripcion">Agregar historial</string>
     <string name="listadoPacientesText">Listado de Pacientes</string>
     <string name="agregarPacienteDescripcion">Agregar paciente</string>
+    <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="email">Email</string>
+    <string name="contrasenia">Contraseña</string>
+    <string name="entrar">Entrar</string>
+    <string name="crear_cuenta">Crear cuenta</string>
+    <string name="cerrar_sesi_n">Cerrar sesión</string>
 </resources>

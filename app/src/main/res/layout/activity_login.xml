@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <LinearLayout
+        android:id="@+id/contenedorFormulario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/padding_l"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="@dimen/logo_size"
+            android:layout_height="@dimen/logo_size"
+            android:contentDescription="@string/logo_tipo_del_proyecto"
+            app:srcCompat="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_m"
+            android:text="@string/iniciar_sesion"
+            android:textColor="@color/colorPrimaryLight"
+            android:textSize="@dimen/text_title"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_xl"
+            app:boxBackgroundMode="filled"
+            app:boxBackgroundColor="@color/colorPrimaryLight"
+            app:boxCornerRadiusTopStart="@dimen/button_radius"
+            app:boxCornerRadiusTopEnd="@dimen/button_radius"
+            app:boxCornerRadiusBottomStart="@dimen/button_radius"
+            app:boxCornerRadiusBottomEnd="@dimen/button_radius">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_height"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/input_padding" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_m"
+            app:boxBackgroundMode="filled"
+            app:boxBackgroundColor="@color/colorPrimaryLight"
+            app:boxCornerRadiusTopStart="@dimen/button_radius"
+            app:boxCornerRadiusTopEnd="@dimen/button_radius"
+            app:boxCornerRadiusBottomStart="@dimen/button_radius"
+            app:boxCornerRadiusBottomEnd="@dimen/button_radius">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_height"
+                android:hint="@string/contrasenia"
+                android:inputType="textPassword"
+                android:padding="@dimen/input_padding" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginTop="@dimen/margin_l"
+            android:paddingStart="@dimen/margin_xl"
+            android:paddingEnd="@dimen/margin_xl"
+            android:text="@string/entrar"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:backgroundTint="@color/colorPrimaryLight"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tvTextoAlternativo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_l"
+            android:text="@string/o_completa_mail_contrasenia"
+            android:textColor="@color/colorPrimaryLight"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tvCrearCuenta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_s"
+            android:text="@string/crear_cuenta"
+            android:textColor="@color/colorPrimaryLight"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
